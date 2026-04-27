@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>BMS Hours Calculator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
@@ -14,7 +15,7 @@
         *::after {
             box-sizing: border-box;
             margin: 0;
-            padding: 0;
+            padding: 0
         }
 
         :root {
@@ -35,31 +36,31 @@
             background: var(--bg);
             color: var(--text);
             font-family: 'DM Sans', sans-serif;
-            min-height: 100vh;
+            min-height: 100vh
         }
 
         header {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border)
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 24px 12px;
+            padding: 20px 24px 12px
         }
 
         .logo {
             font-size: 24px;
             font-weight: 800;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.5px
         }
 
         .sublogo {
             font-size: 13px;
             color: var(--dim);
-            margin-top: 3px;
+            margin-top: 3px
         }
 
         .export-btn {
@@ -71,18 +72,18 @@
             font-weight: 700;
             font-size: 14px;
             cursor: pointer;
-            font-family: inherit;
+            font-family: inherit
         }
 
         .export-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
+            opacity: .4;
+            cursor: not-allowed
         }
 
         .tabs {
             display: flex;
             gap: 4px;
-            padding: 0 16px;
+            padding: 0 16px
         }
 
         .tab-btn {
@@ -95,68 +96,75 @@
             font-weight: 500;
             cursor: pointer;
             font-family: inherit;
-            transition: all .2s;
+            transition: all .2s
         }
 
         .tab-btn.active {
             color: var(--text);
-            border-bottom-color: var(--blue);
+            border-bottom-color: var(--blue)
         }
 
         .content {
-            max-width: 860px;
+            max-width: 880px;
             margin: 0 auto;
             padding: 24px 16px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 20px
         }
 
         .tab-panel {
             display: none;
             flex-direction: column;
-            gap: 20px;
+            gap: 20px
         }
 
         .tab-panel.active {
-            display: flex;
+            display: flex
         }
 
         .card {
             background: var(--surface);
             border-radius: 16px;
             padding: 24px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border)
         }
 
         .card-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 20px
         }
 
         .card-icon {
-            font-size: 22px;
+            font-size: 22px
         }
 
         .card-title {
             font-size: 18px;
             font-weight: 700;
-            flex: 1;
+            flex: 1
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 14px;
-            margin-bottom: 14px;
+            margin-bottom: 14px
+        }
+
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 5px
         }
 
         .field-label {
@@ -164,7 +172,7 @@
             font-weight: 600;
             color: var(--muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px
         }
 
         .auto-tag {
@@ -173,12 +181,13 @@
             font-weight: 400;
             text-transform: none;
             letter-spacing: 0;
-            margin-left: 6px;
+            margin-left: 6px
         }
 
-        input[type="date"],
-        input[type="time"],
-        input[type="text"],
+        input[type=date],
+        input[type=time],
+        input[type=text],
+        input[type=number],
         select {
             background: var(--surface2);
             border: 1px solid var(--border);
@@ -188,45 +197,78 @@
             font-size: 14px;
             font-family: inherit;
             outline: none;
-            width: 100%;
+            width: 100%
         }
 
         input:focus,
         select:focus {
-            border-color: var(--blue);
+            border-color: var(--blue)
         }
 
         select option {
-            background: #1e293b;
+            background: #1e293b
         }
 
         .toggle-row {
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 8px
         }
 
-        .toggle-row input[type="checkbox"] {
+        .toggle-row input[type=checkbox] {
             width: 17px;
             height: 17px;
             accent-color: var(--blue);
-            cursor: pointer;
+            cursor: pointer
         }
 
         .toggle-label-text {
             font-size: 14px;
             font-weight: 600;
             color: #cbd5e1;
-            cursor: pointer;
+            cursor: pointer
         }
 
         .sub-form {
             background: #162032;
             border-radius: 10px;
-            padding: 14px;
+            padding: 16px;
             margin-bottom: 14px;
-            border: 1px solid #243447;
+            border: 1px solid #243447
+        }
+
+        .sub-section-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #243447;
+            margin: 12px 0
+        }
+
+        .preview-box {
+            background: #0d1a2a;
+            border: 1px solid #1e3a52;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 12px;
+            color: #7dd3fc;
+            margin-top: 4px;
+            line-height: 1.7
+        }
+
+        .preview-box b {
+            color: #e2e8f0
         }
 
         .add-btn {
@@ -240,13 +282,13 @@
             font-size: 15px;
             cursor: pointer;
             font-family: inherit;
-            margin-top: 8px;
+            margin-top: 8px
         }
 
         .entry {
             border-top: 1px solid var(--border);
             padding-top: 14px;
-            margin-top: 14px;
+            margin-top: 14px
         }
 
         .entry-header {
@@ -255,19 +297,19 @@
             align-items: center;
             cursor: pointer;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 8px
         }
 
         .entry-left {
             display: flex;
             align-items: center;
             gap: 8px;
-            flex-wrap: wrap;
+            flex-wrap: wrap
         }
 
         .entry-date {
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 600
         }
 
         .day-badge {
@@ -275,14 +317,14 @@
             font-weight: 700;
             color: #fff;
             padding: 2px 9px;
-            border-radius: 20px;
+            border-radius: 20px
         }
 
         .entry-right {
             display: flex;
             align-items: center;
             gap: 8px;
-            flex-wrap: wrap;
+            flex-wrap: wrap
         }
 
         .pill {
@@ -292,29 +334,29 @@
             border: 1px solid;
             border-radius: 8px;
             padding: 3px 10px;
-            min-width: 72px;
+            min-width: 72px
         }
 
         .pill-label {
             font-size: 10px;
             font-weight: 700;
-            text-transform: uppercase;
+            text-transform: uppercase
         }
 
         .pill-value {
             font-size: 14px;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text)
         }
 
         .pill-sub {
             font-size: 10px;
-            color: var(--muted);
+            color: var(--muted)
         }
 
         .chevron {
             color: var(--dim);
-            font-size: 12px;
+            font-size: 12px
         }
 
         .del-btn {
@@ -325,7 +367,7 @@
             padding: 3px 8px;
             cursor: pointer;
             font-size: 12px;
-            font-family: inherit;
+            font-family: inherit
         }
 
         .entry-detail {
@@ -333,28 +375,35 @@
             border-radius: 8px;
             padding: 12px;
             margin-top: 8px;
-            display: none;
+            display: none
         }
 
         .entry-detail.open {
-            display: block;
+            display: block
         }
 
         .detail-row {
             margin: 4px 0;
             font-size: 13px;
-            color: #cbd5e1;
+            color: #cbd5e1
+        }
+
+        .detail-sub {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--green);
+            margin: 8px 0 3px
         }
 
         .seg-row {
             margin: 2px 0 2px 16px;
             font-size: 12px;
-            color: var(--muted);
+            color: var(--muted)
         }
 
         .view-toggle {
             display: flex;
-            gap: 6px;
+            gap: 6px
         }
 
         .view-btn {
@@ -365,17 +414,17 @@
             padding: 6px 14px;
             font-size: 13px;
             cursor: pointer;
-            font-family: inherit;
+            font-family: inherit
         }
 
         .view-btn.active {
             background: #1d4ed8;
             color: #fff;
-            border-color: #1d4ed8;
+            border-color: #1d4ed8
         }
 
         .dash-group {
-            margin-bottom: 28px;
+            margin-bottom: 28px
         }
 
         .dash-group-header {
@@ -384,13 +433,13 @@
             color: var(--muted);
             margin-bottom: 12px;
             padding-bottom: 6px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border)
         }
 
         .dash-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+            gap: 12px
         }
 
         .stat-box {
@@ -398,12 +447,12 @@
             border-radius: 12px;
             padding: 14px 12px;
             text-align: center;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border)
         }
 
         .stat-icon {
             font-size: 20px;
-            margin-bottom: 4px;
+            margin-bottom: 4px
         }
 
         .stat-label {
@@ -411,25 +460,25 @@
             color: var(--dim);
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: .4px
         }
 
         .stat-val {
             font-size: 20px;
             font-weight: 800;
-            margin: 4px 0 2px;
+            margin: 4px 0 2px
         }
 
         .stat-sub {
             font-size: 11px;
             color: var(--dim);
-            min-height: 14px;
+            min-height: 14px
         }
 
         .rates-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 24px
         }
 
         .rates-section {
@@ -437,8 +486,8 @@
             font-weight: 700;
             color: var(--blue);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
+            letter-spacing: .5px;
+            margin-bottom: 10px
         }
 
         .rate-row {
@@ -447,45 +496,53 @@
             padding: 6px 0;
             border-bottom: 1px solid var(--border);
             font-size: 13px;
-            align-items: center;
+            align-items: center
         }
 
         .rate-day {
             color: var(--muted);
             width: 120px;
             flex-shrink: 0;
-            font-size: 12px;
+            font-size: 12px
         }
 
         .rate-desc {
             color: #cbd5e1;
-            flex: 1;
+            flex: 1
         }
 
         .rate-mult {
             font-weight: 800;
             color: var(--amber);
-            font-size: 14px;
+            font-size: 14px
         }
 
         .empty-msg {
             color: #475569;
             text-align: center;
             padding: 32px 0;
-            font-size: 14px;
+            font-size: 14px
         }
 
-        @media (max-width: 600px) {
-            .form-grid {
-                grid-template-columns: 1fr;
+        .hint {
+            font-size: 11px;
+            color: var(--dim);
+            margin-top: 3px
+        }
+
+        @media(max-width:640px) {
+
+            .form-grid,
+            .form-grid-3 {
+                grid-template-columns: 1fr
             }
 
             .dash-stats {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr
             }
 
             .rates-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr
             }
         }
     </style>
@@ -510,21 +567,25 @@
 
     <div class="content">
 
-        <!-- LOG TAB -->
+        <!-- ═══ LOG TAB ═══ -->
+
         <div id="tab-log" class="tab-panel active">
             <div class="card">
                 <div class="card-header">
                     <span class="card-icon">&#9201;</span>
                     <h2 class="card-title">Log Hours</h2>
                 </div>
+
+                ```
+                <!-- Date & Day -->
                 <div class="form-grid">
                     <div class="form-group">
                         <label class="field-label">Date</label>
-                        <input type="date" id="fDate" onchange="updateAutoTag()" />
+                        <input type="date" id="fDate" onchange="updateAutoTag();updatePreviews()" />
                     </div>
                     <div class="form-group">
                         <label class="field-label">Day Type <span class="auto-tag" id="autoTag"></span></label>
-                        <select id="fDayType">
+                        <select id="fDayType" onchange="updatePreviews()">
                             <option value="">Auto-detect</option>
                             <option value="weekday">Mon&#8211;Fri</option>
                             <option value="saturday">Saturday</option>
@@ -532,70 +593,93 @@
                             <option value="bankholiday">Bank Holiday</option>
                         </select>
                     </div>
+                </div>
+
+                <!-- Normal hours -->
+                <div class="form-grid">
                     <div class="form-group">
-                        <label class="field-label">Normal Start</label>
-                        <input type="time" id="fNormStart" value="08:00" />
+                        <label class="field-label">Work Start (arrived on site)</label>
+                        <input type="time" id="fNormStart" value="08:00" onchange="updatePreviews()" />
                     </div>
                     <div class="form-group">
-                        <label class="field-label">Normal End</label>
-                        <input type="time" id="fNormEnd" value="17:00" />
+                        <label class="field-label">Work End (left site)</label>
+                        <input type="time" id="fNormEnd" value="17:00" onchange="updatePreviews()" />
                     </div>
                 </div>
 
+                <!-- Overtime toggle -->
                 <div class="toggle-row">
-                    <input type="checkbox" id="chkOT" onchange="toggleSection('otSection',this)">
+                    <input type="checkbox" id="chkOT" onchange="toggleSection('otSection',this);updatePreviews()">
                     <label class="toggle-label-text" for="chkOT">&#9889; Overtime</label>
                 </div>
                 <div id="otSection" class="sub-form" style="display:none">
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="field-label">OT Start</label>
-                            <input type="time" id="fOtStart" value="17:00" />
+                            <input type="time" id="fOtStart" value="17:00" onchange="updatePreviews()" />
                         </div>
                         <div class="form-group">
                             <label class="field-label">OT End</label>
-                            <input type="time" id="fOtEnd" value="19:00" />
-                        </div>
-                        <div class="form-group">
-                            <label class="field-label">OT Day Override</label>
-                            <select id="fOtDay">
-                                <option value="">Same as day</option>
-                                <option value="weekday">Mon&#8211;Fri</option>
-                                <option value="saturday">Saturday</option>
-                                <option value="sunday">Sunday</option>
-                                <option value="bankholiday">Bank Holiday</option>
-                            </select>
+                            <input type="time" id="fOtEnd" value="19:00" onchange="updatePreviews()" />
                         </div>
                     </div>
+                    <div id="otPreview" class="preview-box" style="display:none"></div>
                 </div>
 
+                <!-- Travel toggle -->
                 <div class="toggle-row">
-                    <input type="checkbox" id="chkTravel" onchange="toggleSection('travelSection',this)">
+                    <input type="checkbox" id="chkTravel"
+                        onchange="toggleSection('travelSection',this);updatePreviews()">
                     <label class="toggle-label-text" for="chkTravel">&#128663; Travel Time</label>
                 </div>
                 <div id="travelSection" class="sub-form" style="display:none">
-                    <div class="form-grid">
+
+                    <!-- Morning commute -->
+                    <div class="sub-section-title">&#127968; Morning — Home to Work</div>
+                    <div class="form-grid-3">
                         <div class="form-group">
-                            <label class="field-label">Travel Start</label>
-                            <input type="time" id="fTravelStart" value="07:00" />
+                            <label class="field-label">Left Home</label>
+                            <input type="time" id="fMornDepart" value="07:00" onchange="updatePreviews()" />
                         </div>
                         <div class="form-group">
-                            <label class="field-label">Travel End</label>
-                            <input type="time" id="fTravelEnd" value="08:00" />
+                            <label class="field-label">Journey (hrs)</label>
+                            <input type="number" id="fMornHrs" value="0" min="0" max="12" step="1"
+                                onchange="updatePreviews()" />
                         </div>
                         <div class="form-group">
-                            <label class="field-label">Travel Day Override</label>
-                            <select id="fTravelDay">
-                                <option value="">Same as day</option>
-                                <option value="weekday">Mon&#8211;Fri</option>
-                                <option value="saturday">Saturday</option>
-                                <option value="sunday">Sunday</option>
-                                <option value="bankholiday">Bank Holiday</option>
-                            </select>
+                            <label class="field-label">Journey (mins)</label>
+                            <input type="number" id="fMornMins" value="45" min="0" max="59" step="1"
+                                onchange="updatePreviews()" />
                         </div>
                     </div>
+                    <div id="mornPreview" class="preview-box" style="display:none"></div>
+
+                    <hr class="divider" />
+
+                    <!-- Evening commute -->
+                    <div class="sub-section-title">&#127970; Evening — Work to Home</div>
+                    <div class="form-grid-3">
+                        <div class="form-group">
+                            <label class="field-label">Left Work</label>
+                            <input type="time" id="fEveDepart" value="17:00" onchange="updatePreviews()" />
+                            <span class="hint">Set to OT end time if you did overtime</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="field-label">Journey (hrs)</label>
+                            <input type="number" id="fEveHrs" value="0" min="0" max="12" step="1"
+                                onchange="updatePreviews()" />
+                        </div>
+                        <div class="form-group">
+                            <label class="field-label">Journey (mins)</label>
+                            <input type="number" id="fEveMins" value="45" min="0" max="59" step="1"
+                                onchange="updatePreviews()" />
+                        </div>
+                    </div>
+                    <div id="evePreview" class="preview-box" style="display:none"></div>
+
                 </div>
 
+                <!-- Notes -->
                 <div class="form-group" style="margin-bottom:0">
                     <label class="field-label">Notes</label>
                     <input type="text" id="fNotes" placeholder="Job, site, task..." />
@@ -603,6 +687,7 @@
                 <button class="add-btn" onclick="addEntry()">+ Add Entry</button>
             </div>
 
+            <!-- Entries list -->
             <div class="card" id="entriesCard" style="display:none">
                 <div class="card-header">
                     <span class="card-icon">&#128197;</span>
@@ -610,9 +695,12 @@
                 </div>
                 <div id="entriesList"></div>
             </div>
+            ```
+
         </div>
 
-        <!-- DASHBOARD TAB -->
+        <!-- ═══ DASHBOARD TAB ═══ -->
+
         <div id="tab-dashboard" class="tab-panel">
             <div class="card">
                 <div class="card-header">
@@ -629,7 +717,8 @@
             </div>
         </div>
 
-        <!-- RATES TAB -->
+        <!-- ═══ RATES TAB ═══ -->
+
         <div id="tab-rates" class="tab-panel">
             <div class="card">
                 <div class="card-header">
@@ -669,33 +758,41 @@
             </div>
         </div>
 
-    </div>
+    </div><!-- /content -->
 
     <script>
+        // ─── State ────────────────────────────────────────────────────────────────────
         var entries = [];
         var dashView = 'weekly';
-
         var DAY_LABELS = { weekday: 'Mon\u2013Fri', saturday: 'Saturday', sunday: 'Sunday', bankholiday: 'Bank Holiday' };
         var DAY_COLORS = { weekday: '#1e40af', saturday: '#7c3aed', sunday: '#b91c1c', bankholiday: '#b45309' };
 
+        // ─── Init ─────────────────────────────────────────────────────────────────────
+        function saveToStorage() {
+            localStorage.setItem('bmsEntries', JSON.stringify(entries));
+        }
+
         window.onload = function () {
-            var today = new Date().toISOString().slice(0, 10);
-            document.getElementById('fDate').value = today;
+            var saved = localStorage.getItem('bmsEntries');
+            if (saved) { try { entries = JSON.parse(saved); } catch (e) { entries = []; } }
+            document.getElementById('fDate').value = new Date().toISOString().slice(0, 10);
             updateAutoTag();
+            updatePreviews();
+            if (entries.length) { document.getElementById('exportBtn').disabled = false; renderEntries(); }
         };
 
+        // ─── Tabs ─────────────────────────────────────────────────────────────────────
         function switchTab(name, btn) {
-            document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
-            document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+            document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active') });
+            document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active') });
             document.getElementById('tab-' + name).classList.add('active');
             btn.classList.add('active');
             if (name === 'dashboard') renderDashboard();
         }
-
         function toggleSection(id, chk) {
             document.getElementById(id).style.display = chk.checked ? 'block' : 'none';
+            updatePreviews();
         }
-
         function setDashView(v) {
             dashView = v;
             document.getElementById('btnWeekly').classList.toggle('active', v === 'weekly');
@@ -703,40 +800,47 @@
             renderDashboard();
         }
 
-        function autoDetectDay(dateStr) {
-            var dow = new Date(dateStr + 'T00:00:00').getDay();
-            if (dow === 0) return 'sunday';
-            if (dow === 6) return 'saturday';
-            return 'weekday';
+        // ─── Helpers ──────────────────────────────────────────────────────────────────
+        function autoDetectDay(d) {
+            var dow = new Date(d + 'T00:00:00').getDay();
+            return dow === 0 ? 'sunday' : dow === 6 ? 'saturday' : 'weekday';
         }
-
         function updateAutoTag() {
             var d = document.getElementById('fDate').value;
-            var tag = document.getElementById('autoTag');
-            tag.textContent = d ? '(auto: ' + DAY_LABELS[autoDetectDay(d)] + ')' : '';
+            document.getElementById('autoTag').textContent = d ? '(auto: ' + DAY_LABELS[autoDetectDay(d)] + ')' : '';
         }
-
+        function getEffectiveDay() {
+            var d = document.getElementById('fDate').value;
+            var m = document.getElementById('fDayType').value;
+            return m || (d ? autoDetectDay(d) : 'weekday');
+        }
         function timeToH(t) {
             if (!t) return 0;
-            var parts = t.split(':');
-            return parseInt(parts[0]) + parseInt(parts[1]) / 60;
+            var p = t.split(':'); return parseInt(p[0]) + parseInt(p[1]) / 60;
         }
-
-        function fmtH(h) { return h.toFixed(2) + 'h'; }
-
+        function addMinsToTime(t, totalMins) {
+            var base = timeToH(t);
+            return base + totalMins / 60;
+        }
+        function fmtH(h) { return h.toFixed(2) + 'h' }
+        function decToTime(h) {
+            h = ((h % 24) + 24) % 24;
+            var hh = Math.floor(h), mm = Math.round((h - hh) * 60);
+            if (mm === 60) { hh++; mm = 0 }
+            return (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm;
+        }
         function fmtDate(d) {
             return new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
         }
-
         function weekKey(d) {
-            var dt = new Date(d + 'T00:00:00');
-            var mon = new Date(dt);
+            var dt = new Date(d + 'T00:00:00'), mon = new Date(dt);
             mon.setDate(dt.getDate() - ((dt.getDay() + 6) % 7));
             return mon.toISOString().slice(0, 10);
         }
+        function monthKey(d) { return d.slice(0, 7) }
+        function wtH(segs) { return segs.reduce(function (s, x) { return s + x.hours * x.multiplier }, 0) }
 
-        function monthKey(d) { return d.slice(0, 7); }
-
+        // ─── Rate calculators ─────────────────────────────────────────────────────────
         function calcOTSegs(dayType, startH, durH) {
             if (!durH || durH <= 0) return [];
             if (dayType === 'sunday' || dayType === 'bankholiday') return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
@@ -745,16 +849,11 @@
                 var isNight = cursor >= 22 || cursor < 6;
                 var seg, mult, label;
                 if (isNight) {
-                    var nextDay = cursor < 6 ? 6 : 30;
-                    seg = Math.min(remaining, nextDay - cursor);
-                    mult = 2.0; label = 'Double Time (Night)';
+                    var nxt = cursor < 6 ? 6 : 30; seg = Math.min(remaining, nxt - cursor); mult = 2.0; label = 'Double Time (Night)';
                 } else if (otUsed < 4) {
-                    var canUse = 4 - otUsed, toNight = 22 - cursor;
-                    seg = Math.min(remaining, canUse, toNight);
-                    mult = 1.5; label = 'Time and a Half'; otUsed += seg;
+                    var can = 4 - otUsed, toN = 22 - cursor; seg = Math.min(remaining, can, toN); mult = 1.5; label = 'Time and a Half'; otUsed += seg;
                 } else {
-                    seg = Math.min(remaining, 22 - cursor);
-                    mult = 2.0; label = 'Double Time';
+                    seg = Math.min(remaining, 22 - cursor); mult = 2.0; label = 'Double Time';
                 }
                 if (seg <= 0.001) break;
                 segs.push({ hours: seg, multiplier: mult, label: label });
@@ -763,15 +862,16 @@
             return segs;
         }
 
+        // Travel segs for weekday use time-of-day bands
         function calcTravelSegs(dayType, startH, durH) {
             if (!durH || durH <= 0) return [];
             if (dayType === 'sunday' || dayType === 'bankholiday') return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
             if (dayType === 'saturday') {
-                var segs = [];
-                var first = Math.min(durH, 4);
-                if (first > 0) segs.push({ hours: first, multiplier: 1.5, label: 'Time and a Half' });
-                if (durH > 4) segs.push({ hours: durH - 4, multiplier: 2.0, label: 'Double Time' });
-                return segs;
+                var s = [];
+                var f = Math.min(durH, 4);
+                if (f > 0) s.push({ hours: f, multiplier: 1.5, label: 'Time and a Half' });
+                if (durH > 4) s.push({ hours: durH - 4, multiplier: 2.0, label: 'Double Time' });
+                return s;
             }
             var segs = [], remaining = durH, cursor = startH % 24;
             while (remaining > 0.001) {
@@ -787,101 +887,191 @@
             return segs;
         }
 
-        function wtH(segs) { return segs.reduce(function (s, x) { return s + x.hours * x.multiplier; }, 0); }
+        // ─── Live preview builder ─────────────────────────────────────────────────────
+        function buildTravelPreview(departH, durH, dayType, label) {
+            if (durH <= 0) return null;
+            var arriveH = departH + durH;
+            var segs = calcTravelSegs(dayType, departH, durH);
+            var eff = wtH(segs);
+            var lines = '<b>' + label + '</b>: depart ' + decToTime(departH) + ' &rarr; arrive ~' + decToTime(arriveH) + '<br>';
+            segs.forEach(function (s) {
+                lines += '&nbsp;&nbsp;&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' (' + s.label + ') = ' + fmtH(s.hours * s.multiplier) + ' eff.<br>';
+            });
+            lines += '<b>Total: ' + fmtH(durH) + ' raw &rarr; ' + fmtH(eff) + ' effective</b>';
+            return lines;
+        }
 
+        function updatePreviews() {
+            var dayType = getEffectiveDay();
+            // OT preview
+            var hasOT = document.getElementById('chkOT').checked;
+            var otPrev = document.getElementById('otPreview');
+            if (hasOT) {
+                var otS = timeToH(document.getElementById('fOtStart').value);
+                var otE = timeToH(document.getElementById('fOtEnd').value);
+                var otDur = Math.max(0, otE - otS);
+                if (otDur > 0) {
+                    var segs = calcOTSegs(dayType, otS, otDur);
+                    var eff = wtH(segs);
+                    var html = '<b>Overtime ' + decToTime(otS) + '&ndash;' + decToTime(otE) + '</b> (' + DAY_LABELS[dayType] + ')<br>';
+                    segs.forEach(function (s) { html += '&nbsp;&nbsp;&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' (' + s.label + ') = ' + fmtH(s.hours * s.multiplier) + ' eff.<br>'; });
+                    html += '<b>Total: ' + fmtH(otDur) + ' raw &rarr; ' + fmtH(eff) + ' effective</b>';
+                    otPrev.innerHTML = html; otPrev.style.display = 'block';
+                } else { otPrev.style.display = 'none'; }
+            } else { otPrev.style.display = 'none'; }
+
+            // Travel previews
+            var hasTr = document.getElementById('chkTravel').checked;
+            var mPrev = document.getElementById('mornPreview');
+            var ePrev = document.getElementById('evePreview');
+            if (hasTr) {
+                var mDep = timeToH(document.getElementById('fMornDepart').value);
+                var mDur = (parseInt(document.getElementById('fMornHrs').value) || 0) * 60 + (parseInt(document.getElementById('fMornMins').value) || 0);
+                var mDurH = mDur / 60;
+                if (mDurH > 0) {
+                    var mp = buildTravelPreview(mDep, mDurH, dayType, 'Morning Travel');
+                    mPrev.innerHTML = mp; mPrev.style.display = 'block';
+                } else { mPrev.style.display = 'none'; }
+
+                var eDep = timeToH(document.getElementById('fEveDepart').value);
+                var eDur = (parseInt(document.getElementById('fEveHrs').value) || 0) * 60 + (parseInt(document.getElementById('fEveMins').value) || 0);
+                var eDurH = eDur / 60;
+                if (eDurH > 0) {
+                    var ep = buildTravelPreview(eDep, eDurH, dayType, 'Evening Travel');
+                    ePrev.innerHTML = ep; ePrev.style.display = 'block';
+                } else { ePrev.style.display = 'none'; }
+            } else { mPrev.style.display = 'none'; ePrev.style.display = 'none'; }
+        }
+
+        // ─── Add entry ────────────────────────────────────────────────────────────────
         function addEntry() {
             var date = document.getElementById('fDate').value;
             if (!date) { alert('Please select a date.'); return; }
-            var manualDay = document.getElementById('fDayType').value;
-            var dayType = manualDay || autoDetectDay(date);
+            var dayType = getEffectiveDay();
             var normStart = document.getElementById('fNormStart').value;
             var normEnd = document.getElementById('fNormEnd').value;
             var normalH = Math.max(0, timeToH(normEnd) - timeToH(normStart));
+
+            // OT
             var hasOT = document.getElementById('chkOT').checked;
             var otStart = document.getElementById('fOtStart').value;
             var otEnd = document.getElementById('fOtEnd').value;
-            var otDayOver = document.getElementById('fOtDay').value;
-            var otDay = otDayOver || dayType;
             var otH = hasOT ? Math.max(0, timeToH(otEnd) - timeToH(otStart)) : 0;
-            var otSegs = hasOT ? calcOTSegs(otDay, timeToH(otStart), otH) : [];
+            var otSegs = hasOT ? calcOTSegs(dayType, timeToH(otStart), otH) : [];
+
+            // Travel
             var hasTr = document.getElementById('chkTravel').checked;
-            var trStart = document.getElementById('fTravelStart').value;
-            var trEnd = document.getElementById('fTravelEnd').value;
-            var trDayOver = document.getElementById('fTravelDay').value;
-            var trDay = trDayOver || dayType;
-            var trH = hasTr ? Math.max(0, timeToH(trEnd) - timeToH(trStart)) : 0;
-            var trSegs = hasTr ? calcTravelSegs(trDay, timeToH(trStart), trH) : [];
+
+            // Morning
+            var mDep = timeToH(document.getElementById('fMornDepart').value);
+            var mMins = (parseInt(document.getElementById('fMornHrs').value) || 0) * 60 + (parseInt(document.getElementById('fMornMins').value) || 0);
+            var mH = hasTr ? mMins / 60 : 0;
+            var mSegs = hasTr && mH > 0 ? calcTravelSegs(dayType, mDep, mH) : [];
+
+            // Evening
+            var eDep = timeToH(document.getElementById('fEveDepart').value);
+            var eMins = (parseInt(document.getElementById('fEveHrs').value) || 0) * 60 + (parseInt(document.getElementById('fEveMins').value) || 0);
+            var eH = hasTr ? eMins / 60 : 0;
+            var eSegs = hasTr && eH > 0 ? calcTravelSegs(dayType, eDep, eH) : [];
+
+            var trH = mH + eH;
+            var trWeighted = wtH(mSegs) + wtH(eSegs);
+
             var notes = document.getElementById('fNotes').value;
+
             entries.unshift({
                 id: Date.now(), date: date, dayType: dayType,
                 normStart: normStart, normEnd: normEnd, normalH: normalH,
-                hasOT: hasOT, otStart: otStart, otEnd: otEnd, otDay: otDay, otH: otH, otSegs: otSegs, otWeighted: wtH(otSegs),
-                hasTr: hasTr, trStart: trStart, trEnd: trEnd, trDay: trDay, trH: trH, trSegs: trSegs, trWeighted: wtH(trSegs),
+                hasOT: hasOT, otStart: otStart, otEnd: otEnd, otH: otH, otSegs: otSegs, otWeighted: wtH(otSegs),
+                hasTr: hasTr,
+                mDep: mDep, mH: mH, mSegs: mSegs, mWeighted: wtH(mSegs),
+                eDep: eDep, eH: eH, eSegs: eSegs, eWeighted: wtH(eSegs),
+                trH: trH, trWeighted: trWeighted,
                 notes: notes
             });
             document.getElementById('fNotes').value = '';
             document.getElementById('exportBtn').disabled = false;
             renderEntries();
+            saveToStorage();
         }
 
+        // ─── Render entries ───────────────────────────────────────────────────────────
         function renderEntries() {
             var list = document.getElementById('entriesList');
             var card = document.getElementById('entriesCard');
-            if (entries.length === 0) { card.style.display = 'none'; return; }
+            if (!entries.length) { card.style.display = 'none'; return; }
             card.style.display = 'block';
             document.getElementById('entriesTitle').textContent = 'Logged Entries (' + entries.length + ')';
+
             list.innerHTML = entries.map(function (e) {
                 var avgOT = e.otH > 0 ? (e.otWeighted / e.otH).toFixed(2) : null;
                 var avgTr = e.trH > 0 ? (e.trWeighted / e.trH).toFixed(2) : null;
+
                 var otPill = e.otH > 0 ? '<div class="pill" style="border-color:#f59e0b"><span class="pill-label" style="color:#f59e0b">OT</span><span class="pill-value">' + fmtH(e.otH) + '</span><span class="pill-sub">&times;avg ' + avgOT + '</span></div>' : '';
                 var trPill = e.trH > 0 ? '<div class="pill" style="border-color:#10b981"><span class="pill-label" style="color:#10b981">Travel</span><span class="pill-value">' + fmtH(e.trH) + '</span><span class="pill-sub">&times;avg ' + avgTr + '</span></div>' : '';
-                var otDetail = e.otH > 0 ? '<p class="detail-row"><b>Overtime (' + DAY_LABELS[e.otDay] + '):</b> ' + e.otStart + '&ndash;' + e.otEnd + '</p>' + e.otSegs.map(function (s) { return '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' effective</p>'; }).join('') : '';
-                var trDetail = e.trH > 0 ? '<p class="detail-row"><b>Travel (' + DAY_LABELS[e.trDay] + '):</b> ' + e.trStart + '&ndash;' + e.trEnd + '</p>' + e.trSegs.map(function (s) { return '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' effective</p>'; }).join('') : '';
-                return '<div class="entry"><div class="entry-header" onclick="toggleDetail(\'det-' + e.id + '\',\'chev-' + e.id + '\')">'
-                    + '<div class="entry-left"><span class="entry-date">' + fmtDate(e.date) + '</span><span class="day-badge" style="background:' + DAY_COLORS[e.dayType] + '">' + DAY_LABELS[e.dayType] + '</span></div>'
-                    + '<div class="entry-right"><div class="pill" style="border-color:#3b82f6"><span class="pill-label" style="color:#3b82f6">Normal</span><span class="pill-value">' + fmtH(e.normalH) + '</span></div>'
+
+                var otDetail = '';
+                if (e.otH > 0) {
+                    otDetail = '<div class="detail-sub">&#9889; Overtime (' + DAY_LABELS[e.dayType] + ') ' + e.otStart + '&ndash;' + e.otEnd + '</div>';
+                    e.otSegs.forEach(function (s) { otDetail += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
+                }
+
+                var trDetail = '';
+                if (e.hasTr && e.mH > 0) {
+                    trDetail += '<div class="detail-sub">&#127968; Morning Travel &mdash; depart ' + decToTime(e.mDep) + ', ' + fmtH(e.mH) + '</div>';
+                    e.mSegs.forEach(function (s) { trDetail += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
+                }
+                if (e.hasTr && e.eH > 0) {
+                    trDetail += '<div class="detail-sub">&#127970; Evening Travel &mdash; depart ' + decToTime(e.eDep) + ', ' + fmtH(e.eH) + '</div>';
+                    e.eSegs.forEach(function (s) { trDetail += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
+                }
+
+                return '<div class="entry">'
+                    + '<div class="entry-header" onclick="toggleDetail(\'det-' + e.id + '\',\'chev-' + e.id + '\')">'
+                    + '<div class="entry-left"><span class="entry-date">' + fmtDate(e.date) + '</span>'
+                    + '<span class="day-badge" style="background:' + DAY_COLORS[e.dayType] + '">' + DAY_LABELS[e.dayType] + '</span></div>'
+                    + '<div class="entry-right">'
+                    + '<div class="pill" style="border-color:#3b82f6"><span class="pill-label" style="color:#3b82f6">Normal</span><span class="pill-value">' + fmtH(e.normalH) + '</span></div>'
                     + otPill + trPill
                     + '<span class="chevron" id="chev-' + e.id + '">&#9660;</span>'
-                    + '<button class="del-btn" onclick="event.stopPropagation();deleteEntry(' + e.id + ')">&#10005;</button></div></div>'
+                    + '<button class="del-btn" onclick="event.stopPropagation();deleteEntry(' + e.id + ')">&#10005;</button>'
+                    + '</div></div>'
                     + '<div class="entry-detail" id="det-' + e.id + '">'
                     + '<p class="detail-row"><b>Normal:</b> ' + e.normStart + '&ndash;' + e.normEnd + ' (' + fmtH(e.normalH) + ') &times; 1.0</p>'
                     + otDetail + trDetail
-                    + (e.notes ? '<p class="detail-row"><b>Notes:</b> ' + e.notes + '</p>' : '')
+                    + (e.notes ? '<p class="detail-row" style="margin-top:6px"><b>Notes:</b> ' + e.notes + '</p>' : '')
                     + '</div></div>';
             }).join('');
         }
 
         function toggleDetail(detId, chevId) {
-            var det = document.getElementById(detId);
-            var chev = document.getElementById(chevId);
+            var det = document.getElementById(detId), chev = document.getElementById(chevId);
             var open = det.classList.toggle('open');
             chev.innerHTML = open ? '&#9650;' : '&#9660;';
         }
-
         function deleteEntry(id) {
-            entries = entries.filter(function (e) { return e.id !== id; });
-            if (entries.length === 0) document.getElementById('exportBtn').disabled = true;
-            renderEntries();
-            renderDashboard();
+            entries = entries.filter(function (e) { return e.id !== id });
+            if (!entries.length) document.getElementById('exportBtn').disabled = true;
+            renderEntries(); renderDashboard();
+            saveToStorage();
         }
 
+        // ─── Dashboard ────────────────────────────────────────────────────────────────
         function renderDashboard() {
             var el = document.getElementById('dashContent');
-            if (entries.length === 0) { el.innerHTML = '<p class="empty-msg">No entries yet &mdash; log some hours first.</p>'; return; }
+            if (!entries.length) { el.innerHTML = '<p class="empty-msg">No entries yet &mdash; log some hours first.</p>'; return; }
             var map = {};
             entries.forEach(function (e) {
                 var key = dashView === 'weekly' ? weekKey(e.date) : monthKey(e.date);
-                if (!map[key]) map[key] = [];
-                map[key].push(e);
+                if (!map[key]) map[key] = []; map[key].push(e);
             });
-            var sorted = Object.keys(map).sort().reverse();
-            el.innerHTML = sorted.map(function (key) {
+            el.innerHTML = Object.keys(map).sort().reverse().map(function (key) {
                 var grp = map[key];
-                var nT = grp.reduce(function (s, e) { return s + e.normalH; }, 0);
-                var oT = grp.reduce(function (s, e) { return s + e.otH; }, 0);
-                var oW = grp.reduce(function (s, e) { return s + e.otWeighted; }, 0);
-                var tT = grp.reduce(function (s, e) { return s + e.trH; }, 0);
-                var tW = grp.reduce(function (s, e) { return s + e.trWeighted; }, 0);
+                var nT = grp.reduce(function (s, e) { return s + e.normalH }, 0);
+                var oT = grp.reduce(function (s, e) { return s + e.otH }, 0);
+                var oW = grp.reduce(function (s, e) { return s + e.otWeighted }, 0);
+                var tT = grp.reduce(function (s, e) { return s + e.trH }, 0);
+                var tW = grp.reduce(function (s, e) { return s + e.trWeighted }, 0);
                 var tot = nT + oW + tW;
                 var label = dashView === 'weekly' ? 'Week of ' + fmtDate(key) : new Date(key + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
                 var oSub = oT > 0 ? '&times;avg ' + (oW / oT).toFixed(2) + ' &rarr; ' + fmtH(oW) + ' eff.' : '&mdash;';
@@ -896,23 +1086,40 @@
             }).join('');
         }
 
+        // ─── Excel export ─────────────────────────────────────────────────────────────
         function exportXLSX() {
             var wb = XLSX.utils.book_new();
-            var detail = [['Date', 'Day', 'Normal Start', 'Normal End', 'Normal Hrs', 'OT Start', 'OT End', 'OT Hrs', 'OT Effective Hrs', 'Travel Start', 'Travel End', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs', 'Notes']];
+
+            // Daily detail
+            var detail = [['Date', 'Day',
+                'Work Start', 'Work End', 'Normal Hrs',
+                'OT Start', 'OT End', 'OT Hrs', 'OT Effective Hrs',
+                'Morn Depart', 'Morn Journey Hrs', 'Morn Effective Hrs',
+                'Eve Depart', 'Eve Journey Hrs', 'Eve Effective Hrs',
+                'Total Travel Hrs', 'Total Travel Effective Hrs',
+                'Total Effective Hrs', 'Notes']];
             entries.forEach(function (e) {
-                detail.push([e.date, DAY_LABELS[e.dayType], e.normStart, e.normEnd, +e.normalH.toFixed(2),
-                e.hasOT ? e.otStart : '', e.hasOT ? e.otEnd : '', +e.otH.toFixed(2), +e.otWeighted.toFixed(2),
-                e.hasTr ? e.trStart : '', e.hasTr ? e.trEnd : '', +e.trH.toFixed(2), +e.trWeighted.toFixed(2),
-                +(e.normalH + e.otWeighted + e.trWeighted).toFixed(2), e.notes]);
+                detail.push([
+                    e.date, DAY_LABELS[e.dayType],
+                    e.normStart, e.normEnd, +e.normalH.toFixed(2),
+                    e.hasOT ? e.otStart : '', e.hasOT ? e.otEnd : '', +e.otH.toFixed(2), +e.otWeighted.toFixed(2),
+                    e.hasTr ? decToTime(e.mDep) : '', +e.mH.toFixed(2), +e.mWeighted.toFixed(2),
+                    e.hasTr ? decToTime(e.eDep) : '', +e.eH.toFixed(2), +e.eWeighted.toFixed(2),
+                    +e.trH.toFixed(2), +e.trWeighted.toFixed(2),
+                    +(e.normalH + e.otWeighted + e.trWeighted).toFixed(2),
+                    e.notes
+                ]);
             });
             XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(detail), 'Daily Detail');
 
+            // Weekly
             var wMap = {};
             entries.forEach(function (e) { var k = weekKey(e.date); if (!wMap[k]) wMap[k] = { n: 0, ot: 0, otW: 0, tr: 0, trW: 0 }; wMap[k].n += e.normalH; wMap[k].ot += e.otH; wMap[k].otW += e.otWeighted; wMap[k].tr += e.trH; wMap[k].trW += e.trWeighted; });
             var weekly = [['Week Starting', 'Normal Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs']];
             Object.keys(wMap).sort().forEach(function (k) { var v = wMap[k]; weekly.push([k, +v.n.toFixed(2), +v.ot.toFixed(2), +v.otW.toFixed(2), +v.tr.toFixed(2), +v.trW.toFixed(2), +(v.n + v.otW + v.trW).toFixed(2)]); });
             XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(weekly), 'Weekly Summary');
 
+            // Monthly
             var mMap = {};
             entries.forEach(function (e) { var k = monthKey(e.date); if (!mMap[k]) mMap[k] = { n: 0, ot: 0, otW: 0, tr: 0, trW: 0 }; mMap[k].n += e.normalH; mMap[k].ot += e.otH; mMap[k].otW += e.otWeighted; mMap[k].tr += e.trH; mMap[k].trW += e.trWeighted; });
             var monthly = [['Month', 'Normal Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs']];
@@ -922,6 +1129,7 @@
             XLSX.writeFile(wb, 'BMS_Work_Hours_' + new Date().toISOString().slice(0, 10) + '.xlsx');
         }
     </script>
+
 </body>
 
 </html>
