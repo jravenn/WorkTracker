@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMS Hours Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface2: #0f172a;
+            --border: #334155;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --dim: #64748b;
+            --blue: #3b82f6;
+            --amber: #f59e0b;
+            --green: #10b981;
+            --purple: #6366f1;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px 12px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .sublogo {
+            font-size: 13px;
+            color: var(--dim);
+            margin-top: 3px;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .export-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            padding: 0 16px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--dim);
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all .2s;
+        }
+
+        .tab-btn.active {
+            color: var(--text);
+            border-bottom-color: var(--blue);
+        }
+
+        .content {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tab-panel {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .tab-panel.active {
+            display: flex;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 22px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .field-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .auto-tag {
+            font-size: 11px;
+            color: var(--dim);
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
+            margin-left: 6px;
+        }
+
+        input[type="date"],
+        input[type="time"],
+        input[type="text"],
+        select {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 9px 12px;
+            color: var(--text);
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            width: 100%;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--blue);
+        }
+
+        select option {
+            background: #1e293b;
+        }
+
+        .toggle-row {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toggle-row input[type="checkbox"] {
+            width: 17px;
+            height: 17px;
+            accent-color: var(--blue);
+            cursor: pointer;
+        }
+
+        .toggle-label-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #cbd5e1;
+            cursor: pointer;
+        }
+
+        .sub-form {
+            background: #162032;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 14px;
+            border: 1px solid #243447;
+        }
+
+        .add-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: inherit;
+            margin-top: 8px;
+        }
+
+        .entry {
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            margin-top: 14px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .entry-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .entry-date {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .day-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fff;
+            padding: 2px 9px;
+            border-radius: 20px;
+        }
+
+        .entry-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid;
+            border-radius: 8px;
+            padding: 3px 10px;
+            min-width: 72px;
+        }
+
+        .pill-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pill-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .pill-sub {
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .chevron {
+            color: var(--dim);
+            font-size: 12px;
+        }
+
+        .del-btn {
+            background: #7f1d1d;
+            border: none;
+            color: #fca5a5;
+            border-radius: 6px;
+            padding: 3px 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit;
+        }
+
+        .entry-detail {
+            background: var(--surface2);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .entry-detail.open {
+            display: block;
+        }
+
+        .detail-row {
+            margin: 4px 0;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        .seg-row {
+            margin: 2px 0 2px 16px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 6px;
+        }
+
+        .view-btn {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--dim);
+            border-radius: 8px;
+            padding: 6px 14px;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .view-btn.active {
+            background: #1d4ed8;
+            color: #fff;
+            border-color: #1d4ed8;
+        }
+
+        .dash-group {
+            margin-bottom: 28px;
+        }
+
+        .dash-group-header {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--muted);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dash-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .stat-box {
+            background: var(--surface2);
+            border-radius: 12px;
+            padding: 14px 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--dim);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .stat-val {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 4px 0 2px;
+        }
+
+        .stat-sub {
+            font-size: 11px;
+            color: var(--dim);
+            min-height: 14px;
+        }
+
+        .rates-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .rates-section {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .rate-row {
+            display: flex;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            align-items: center;
+        }
+
+        .rate-day {
+            color: var(--muted);
+            width: 120px;
+            flex-shrink: 0;
+            font-size: 12px;
+        }
+
+        .rate-desc {
+            color: #cbd5e1;
+            flex: 1;
+        }
+
+        .rate-mult {
+            font-weight: 800;
+            color: var(--amber);
+            font-size: 14px;
+        }
+
+        .empty-msg {
+            color: #475569;
+            text-align: center;
+            padding: 32px 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dash-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .rates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div>
+                <div class="logo">BMS Hours</div>
+                <div class="sublogo">Overtime &amp; Travel Calculator</div>
+            </div>
+            <button class="export-btn" id="exportBtn" disabled onclick="exportXLSX()">&#8595; Export Excel</button>
+        </div>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('log',this)">&#9201; Log Hours</button>
+            <button class="tab-btn" onclick="switchTab('dashboard',this)">&#128202; Dashboard</button>
+            <button class="tab-btn" onclick="switchTab('rates',this)">&#128203; Rates</button>
+        </div>
+    </header>
+
+    <div class="content">
+
+        <!-- LOG TAB -->
+        <div id="tab-log" class="tab-panel active">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">&#9201;</span>
+                    <h2 class="card-title">Log Hours</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="field-label">Date</label>
+                        <input type="date" id="fDate" onchange="updateAutoTag()" />
+                    </div>
+                    <div class="form-group">
+                        <label class="field-label">Day Type <span class="auto-tag" id="autoTag"></span></label>
+                        <select id="fDayType">
+                            <option value="">Auto-detect</option>
+                            <option value="weekday">Mon&#8211;Fri</option>
+                            <option value="saturday">Saturday</option>
+                            <option value="sunday">Sunday</option>
+                            <option value="bankholiday">Bank Holiday</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="field-label">Normal Start</label>
+                        <input type="time" id="fNormStart" value="08:00" />
+                    </div>
+                    <div class="form-group">
+                        <label class="field-label">Normal End</label>
+                        <input type="time" id="fNormEnd" value="17:00" />
+                    </div>
+                </div>
+
+                <div class="toggle-row">
+                    <input type="checkbox" id="chkOT" onchange="toggleSection('otSection',this)">
+                    <label class="toggle-label-text" for="chkOT">&#9889; Overtime</label>
+                </div>
+                <div id="otSection" class="sub-form" style="display:none">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="field-label">OT Start</label>
+                            <input type="time" id="fOtStart" value="17:00" />
+                        </div>
+                        <div class="form-group">
+                            <label class="field-label">OT End</label>
+                            <input type="time" id="fOtEnd" value="19:00" />
+                        </div>
+                        <div class="form-group">
+                            <label class="field-label">OT Day Override</label>
+                            <select id="fOtDay">
+                                <option value="">Same as day</option>
+                                <option value="weekday">Mon&#8211;Fri</option>
+                                <option value="saturday">Saturday</option>
+                                <option value="sunday">Sunday</option>
+                                <option value="bankholiday">Bank Holiday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="toggle-row">
+                    <input type="checkbox" id="chkTravel" onchange="toggleSection('travelSection',this)">
+                    <label class="toggle-label-text" for="chkTravel">&#128663; Travel Time</label>
+                </div>
+                <div id="travelSection" class="sub-form" style="display:none">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="field-label">Travel Start</label>
+                            <input type="time" id="fTravelStart" value="07:00" />
+                        </div>
+                        <div class="form-group">
+                            <label class="field-label">Travel End</label>
+                            <input type="time" id="fTravelEnd" value="08:00" />
+                        </div>
+                        <div class="form-group">
+                            <label class="field-label">Travel Day Override</label>
+                            <select id="fTravelDay">
+                                <option value="">Same as day</option>
+                                <option value="weekday">Mon&#8211;Fri</option>
+                                <option value="saturday">Saturday</option>
+                                <option value="sunday">Sunday</option>
+                                <option value="bankholiday">Bank Holiday</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:0">
+                    <label class="field-label">Notes</label>
+                    <input type="text" id="fNotes" placeholder="Job, site, task..." />
+                </div>
+                <button class="add-btn" onclick="addEntry()">+ Add Entry</button>
+            </div>
+
+            <div class="card" id="entriesCard" style="display:none">
+                <div class="card-header">
+                    <span class="card-icon">&#128197;</span>
+                    <h2 class="card-title" id="entriesTitle">Logged Entries</h2>
+                </div>
+                <div id="entriesList"></div>
+            </div>
+        </div>
+
+        <!-- DASHBOARD TAB -->
+        <div id="tab-dashboard" class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">&#128202;</span>
+                    <h2 class="card-title">Dashboard</h2>
+                    <div class="view-toggle">
+                        <button class="view-btn active" id="btnWeekly" onclick="setDashView('weekly')">Weekly</button>
+                        <button class="view-btn" id="btnMonthly" onclick="setDashView('monthly')">Monthly</button>
+                    </div>
+                </div>
+                <div id="dashContent">
+                    <p class="empty-msg">No entries yet &#8212; log some hours first.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RATES TAB -->
+        <div id="tab-rates" class="tab-panel">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">&#128203;</span>
+                    <h2 class="card-title">Rate Reference (BMS)</h2>
+                </div>
+                <div class="rates-grid">
+                    <div>
+                        <div class="rates-section">Overtime</div>
+                        <div class="rate-row"><span class="rate-day">Mon&#8211;Fri / Sat</span><span
+                                class="rate-desc">First 4 hours OT</span><span class="rate-mult">&#215;1.5</span></div>
+                        <div class="rate-row"><span class="rate-day">Mon&#8211;Fri / Sat</span><span
+                                class="rate-desc">After 4 hours OT</span><span class="rate-mult">&#215;2.0</span></div>
+                        <div class="rate-row"><span class="rate-day">Mon&#8211;Fri</span><span class="rate-desc">Nights
+                                22:00&#8211;06:00</span><span class="rate-mult">&#215;2.0</span></div>
+                        <div class="rate-row"><span class="rate-day">Sun / Bank Hol</span><span class="rate-desc">All
+                                time worked</span><span class="rate-mult">&#215;2.0</span></div>
+                        <div class="rate-row" style="border:none"><span class="rate-day">Bank Holiday</span><span
+                                class="rate-desc">(+) Day off in lieu</span><span class="rate-mult">&#8212;</span></div>
+                    </div>
+                    <div>
+                        <div class="rates-section">Travel Time</div>
+                        <div class="rate-row"><span class="rate-day">Mon&#8211;Fri</span><span
+                                class="rate-desc">06:00&#8211;18:00</span><span class="rate-mult">&#215;1.0</span></div>
+                        <div class="rate-row"><span class="rate-day">Mon&#8211;Fri</span><span
+                                class="rate-desc">18:00&#8211;22:00</span><span class="rate-mult">&#215;1.5</span></div>
+                        <div class="rate-row"><span class="rate-day">Mon&#8211;Fri</span><span
+                                class="rate-desc">22:00&#8211;06:00</span><span class="rate-mult">&#215;2.0</span></div>
+                        <div class="rate-row"><span class="rate-day">Saturday</span><span class="rate-desc">First 4
+                                hours</span><span class="rate-mult">&#215;1.5</span></div>
+                        <div class="rate-row"><span class="rate-day">Saturday</span><span class="rate-desc">After 4
+                                hours</span><span class="rate-mult">&#215;2.0</span></div>
+                        <div class="rate-row" style="border:none"><span class="rate-day">Sun / Bank Hol</span><span
+                                class="rate-desc">All travel time</span><span class="rate-mult">&#215;2.0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var entries = [];
+        var dashView = 'weekly';
+
+        var DAY_LABELS = { weekday: 'Mon\u2013Fri', saturday: 'Saturday', sunday: 'Sunday', bankholiday: 'Bank Holiday' };
+        var DAY_COLORS = { weekday: '#1e40af', saturday: '#7c3aed', sunday: '#b91c1c', bankholiday: '#b45309' };
+
+        window.onload = function () {
+            var today = new Date().toISOString().slice(0, 10);
+            document.getElementById('fDate').value = today;
+            updateAutoTag();
+        };
+
+        function switchTab(name, btn) {
+            document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+            document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+            document.getElementById('tab-' + name).classList.add('active');
+            btn.classList.add('active');
+            if (name === 'dashboard') renderDashboard();
+        }
+
+        function toggleSection(id, chk) {
+            document.getElementById(id).style.display = chk.checked ? 'block' : 'none';
+        }
+
+        function setDashView(v) {
+            dashView = v;
+            document.getElementById('btnWeekly').classList.toggle('active', v === 'weekly');
+            document.getElementById('btnMonthly').classList.toggle('active', v === 'monthly');
+            renderDashboard();
+        }
+
+        function autoDetectDay(dateStr) {
+            var dow = new Date(dateStr + 'T00:00:00').getDay();
+            if (dow === 0) return 'sunday';
+            if (dow === 6) return 'saturday';
+            return 'weekday';
+        }
+
+        function updateAutoTag() {
+            var d = document.getElementById('fDate').value;
+            var tag = document.getElementById('autoTag');
+            tag.textContent = d ? '(auto: ' + DAY_LABELS[autoDetectDay(d)] + ')' : '';
+        }
+
+        function timeToH(t) {
+            if (!t) return 0;
+            var parts = t.split(':');
+            return parseInt(parts[0]) + parseInt(parts[1]) / 60;
+        }
+
+        function fmtH(h) { return h.toFixed(2) + 'h'; }
+
+        function fmtDate(d) {
+            return new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+        }
+
+        function weekKey(d) {
+            var dt = new Date(d + 'T00:00:00');
+            var mon = new Date(dt);
+            mon.setDate(dt.getDate() - ((dt.getDay() + 6) % 7));
+            return mon.toISOString().slice(0, 10);
+        }
+
+        function monthKey(d) { return d.slice(0, 7); }
+
+        function calcOTSegs(dayType, startH, durH) {
+            if (!durH || durH <= 0) return [];
+            if (dayType === 'sunday' || dayType === 'bankholiday') return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
+            var segs = [], remaining = durH, cursor = startH, otUsed = 0;
+            while (remaining > 0.001) {
+                var isNight = cursor >= 22 || cursor < 6;
+                var seg, mult, label;
+                if (isNight) {
+                    var nextDay = cursor < 6 ? 6 : 30;
+                    seg = Math.min(remaining, nextDay - cursor);
+                    mult = 2.0; label = 'Double Time (Night)';
+                } else if (otUsed < 4) {
+                    var canUse = 4 - otUsed, toNight = 22 - cursor;
+                    seg = Math.min(remaining, canUse, toNight);
+                    mult = 1.5; label = 'Time and a Half'; otUsed += seg;
+                } else {
+                    seg = Math.min(remaining, 22 - cursor);
+                    mult = 2.0; label = 'Double Time';
+                }
+                if (seg <= 0.001) break;
+                segs.push({ hours: seg, multiplier: mult, label: label });
+                cursor += seg; remaining -= seg;
+            }
+            return segs;
+        }
+
+        function calcTravelSegs(dayType, startH, durH) {
+            if (!durH || durH <= 0) return [];
+            if (dayType === 'sunday' || dayType === 'bankholiday') return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
+            if (dayType === 'saturday') {
+                var segs = [];
+                var first = Math.min(durH, 4);
+                if (first > 0) segs.push({ hours: first, multiplier: 1.5, label: 'Time and a Half' });
+                if (durH > 4) segs.push({ hours: durH - 4, multiplier: 2.0, label: 'Double Time' });
+                return segs;
+            }
+            var segs = [], remaining = durH, cursor = startH % 24;
+            while (remaining > 0.001) {
+                var mult, label, nextB;
+                if (cursor >= 6 && cursor < 18) { mult = 1.0; label = 'Single Rate'; nextB = 18; }
+                else if (cursor >= 18 && cursor < 22) { mult = 1.5; label = 'Time and a Half'; nextB = 22; }
+                else { mult = 2.0; label = 'Double Time'; nextB = cursor < 6 ? 6 : 30; }
+                var seg = Math.min(remaining, nextB - cursor);
+                if (seg <= 0.001) break;
+                segs.push({ hours: seg, multiplier: mult, label: label });
+                cursor += seg; remaining -= seg;
+            }
+            return segs;
+        }
+
+        function wtH(segs) { return segs.reduce(function (s, x) { return s + x.hours * x.multiplier; }, 0); }
+
+        function addEntry() {
+            var date = document.getElementById('fDate').value;
+            if (!date) { alert('Please select a date.'); return; }
+            var manualDay = document.getElementById('fDayType').value;
+            var dayType = manualDay || autoDetectDay(date);
+            var normStart = document.getElementById('fNormStart').value;
+            var normEnd = document.getElementById('fNormEnd').value;
+            var normalH = Math.max(0, timeToH(normEnd) - timeToH(normStart));
+            var hasOT = document.getElementById('chkOT').checked;
+            var otStart = document.getElementById('fOtStart').value;
+            var otEnd = document.getElementById('fOtEnd').value;
+            var otDayOver = document.getElementById('fOtDay').value;
+            var otDay = otDayOver || dayType;
+            var otH = hasOT ? Math.max(0, timeToH(otEnd) - timeToH(otStart)) : 0;
+            var otSegs = hasOT ? calcOTSegs(otDay, timeToH(otStart), otH) : [];
+            var hasTr = document.getElementById('chkTravel').checked;
+            var trStart = document.getElementById('fTravelStart').value;
+            var trEnd = document.getElementById('fTravelEnd').value;
+            var trDayOver = document.getElementById('fTravelDay').value;
+            var trDay = trDayOver || dayType;
+            var trH = hasTr ? Math.max(0, timeToH(trEnd) - timeToH(trStart)) : 0;
+            var trSegs = hasTr ? calcTravelSegs(trDay, timeToH(trStart), trH) : [];
+            var notes = document.getElementById('fNotes').value;
+            entries.unshift({
+                id: Date.now(), date: date, dayType: dayType,
+                normStart: normStart, normEnd: normEnd, normalH: normalH,
+                hasOT: hasOT, otStart: otStart, otEnd: otEnd, otDay: otDay, otH: otH, otSegs: otSegs, otWeighted: wtH(otSegs),
+                hasTr: hasTr, trStart: trStart, trEnd: trEnd, trDay: trDay, trH: trH, trSegs: trSegs, trWeighted: wtH(trSegs),
+                notes: notes
+            });
+            document.getElementById('fNotes').value = '';
+            document.getElementById('exportBtn').disabled = false;
+            renderEntries();
+        }
+
+        function renderEntries() {
+            var list = document.getElementById('entriesList');
+            var card = document.getElementById('entriesCard');
+            if (entries.length === 0) { card.style.display = 'none'; return; }
+            card.style.display = 'block';
+            document.getElementById('entriesTitle').textContent = 'Logged Entries (' + entries.length + ')';
+            list.innerHTML = entries.map(function (e) {
+                var avgOT = e.otH > 0 ? (e.otWeighted / e.otH).toFixed(2) : null;
+                var avgTr = e.trH > 0 ? (e.trWeighted / e.trH).toFixed(2) : null;
+                var otPill = e.otH > 0 ? '<div class="pill" style="border-color:#f59e0b"><span class="pill-label" style="color:#f59e0b">OT</span><span class="pill-value">' + fmtH(e.otH) + '</span><span class="pill-sub">&times;avg ' + avgOT + '</span></div>' : '';
+                var trPill = e.trH > 0 ? '<div class="pill" style="border-color:#10b981"><span class="pill-label" style="color:#10b981">Travel</span><span class="pill-value">' + fmtH(e.trH) + '</span><span class="pill-sub">&times;avg ' + avgTr + '</span></div>' : '';
+                var otDetail = e.otH > 0 ? '<p class="detail-row"><b>Overtime (' + DAY_LABELS[e.otDay] + '):</b> ' + e.otStart + '&ndash;' + e.otEnd + '</p>' + e.otSegs.map(function (s) { return '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' effective</p>'; }).join('') : '';
+                var trDetail = e.trH > 0 ? '<p class="detail-row"><b>Travel (' + DAY_LABELS[e.trDay] + '):</b> ' + e.trStart + '&ndash;' + e.trEnd + '</p>' + e.trSegs.map(function (s) { return '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' effective</p>'; }).join('') : '';
+                return '<div class="entry"><div class="entry-header" onclick="toggleDetail(\'det-' + e.id + '\',\'chev-' + e.id + '\')">'
+                    + '<div class="entry-left"><span class="entry-date">' + fmtDate(e.date) + '</span><span class="day-badge" style="background:' + DAY_COLORS[e.dayType] + '">' + DAY_LABELS[e.dayType] + '</span></div>'
+                    + '<div class="entry-right"><div class="pill" style="border-color:#3b82f6"><span class="pill-label" style="color:#3b82f6">Normal</span><span class="pill-value">' + fmtH(e.normalH) + '</span></div>'
+                    + otPill + trPill
+                    + '<span class="chevron" id="chev-' + e.id + '">&#9660;</span>'
+                    + '<button class="del-btn" onclick="event.stopPropagation();deleteEntry(' + e.id + ')">&#10005;</button></div></div>'
+                    + '<div class="entry-detail" id="det-' + e.id + '">'
+                    + '<p class="detail-row"><b>Normal:</b> ' + e.normStart + '&ndash;' + e.normEnd + ' (' + fmtH(e.normalH) + ') &times; 1.0</p>'
+                    + otDetail + trDetail
+                    + (e.notes ? '<p class="detail-row"><b>Notes:</b> ' + e.notes + '</p>' : '')
+                    + '</div></div>';
+            }).join('');
+        }
+
+        function toggleDetail(detId, chevId) {
+            var det = document.getElementById(detId);
+            var chev = document.getElementById(chevId);
+            var open = det.classList.toggle('open');
+            chev.innerHTML = open ? '&#9650;' : '&#9660;';
+        }
+
+        function deleteEntry(id) {
+            entries = entries.filter(function (e) { return e.id !== id; });
+            if (entries.length === 0) document.getElementById('exportBtn').disabled = true;
+            renderEntries();
+            renderDashboard();
+        }
+
+        function renderDashboard() {
+            var el = document.getElementById('dashContent');
+            if (entries.length === 0) { el.innerHTML = '<p class="empty-msg">No entries yet &mdash; log some hours first.</p>'; return; }
+            var map = {};
+            entries.forEach(function (e) {
+                var key = dashView === 'weekly' ? weekKey(e.date) : monthKey(e.date);
+                if (!map[key]) map[key] = [];
+                map[key].push(e);
+            });
+            var sorted = Object.keys(map).sort().reverse();
+            el.innerHTML = sorted.map(function (key) {
+                var grp = map[key];
+                var nT = grp.reduce(function (s, e) { return s + e.normalH; }, 0);
+                var oT = grp.reduce(function (s, e) { return s + e.otH; }, 0);
+                var oW = grp.reduce(function (s, e) { return s + e.otWeighted; }, 0);
+                var tT = grp.reduce(function (s, e) { return s + e.trH; }, 0);
+                var tW = grp.reduce(function (s, e) { return s + e.trWeighted; }, 0);
+                var tot = nT + oW + tW;
+                var label = dashView === 'weekly' ? 'Week of ' + fmtDate(key) : new Date(key + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+                var oSub = oT > 0 ? '&times;avg ' + (oW / oT).toFixed(2) + ' &rarr; ' + fmtH(oW) + ' eff.' : '&mdash;';
+                var tSub = tT > 0 ? '&times;avg ' + (tW / tT).toFixed(2) + ' &rarr; ' + fmtH(tW) + ' eff.' : '&mdash;';
+                return '<div class="dash-group"><div class="dash-group-header">' + label + '</div>'
+                    + '<div class="dash-stats">'
+                    + '<div class="stat-box"><div class="stat-icon">&#128336;</div><div class="stat-label">Normal Hours</div><div class="stat-val" style="color:#3b82f6">' + fmtH(nT) + '</div><div class="stat-sub">&times; 1.0</div></div>'
+                    + '<div class="stat-box"><div class="stat-icon">&#9889;</div><div class="stat-label">Overtime</div><div class="stat-val" style="color:#f59e0b">' + fmtH(oT) + '</div><div class="stat-sub">' + oSub + '</div></div>'
+                    + '<div class="stat-box"><div class="stat-icon">&#128663;</div><div class="stat-label">Travel</div><div class="stat-val" style="color:#10b981">' + fmtH(tT) + '</div><div class="stat-sub">' + tSub + '</div></div>'
+                    + '<div class="stat-box"><div class="stat-icon">&#8721;</div><div class="stat-label">Total Effective</div><div class="stat-val" style="color:#6366f1">' + fmtH(tot) + '</div><div class="stat-sub">&nbsp;</div></div>'
+                    + '</div></div>';
+            }).join('');
+        }
+
+        function exportXLSX() {
+            var wb = XLSX.utils.book_new();
+            var detail = [['Date', 'Day', 'Normal Start', 'Normal End', 'Normal Hrs', 'OT Start', 'OT End', 'OT Hrs', 'OT Effective Hrs', 'Travel Start', 'Travel End', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs', 'Notes']];
+            entries.forEach(function (e) {
+                detail.push([e.date, DAY_LABELS[e.dayType], e.normStart, e.normEnd, +e.normalH.toFixed(2),
+                e.hasOT ? e.otStart : '', e.hasOT ? e.otEnd : '', +e.otH.toFixed(2), +e.otWeighted.toFixed(2),
+                e.hasTr ? e.trStart : '', e.hasTr ? e.trEnd : '', +e.trH.toFixed(2), +e.trWeighted.toFixed(2),
+                +(e.normalH + e.otWeighted + e.trWeighted).toFixed(2), e.notes]);
+            });
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(detail), 'Daily Detail');
+
+            var wMap = {};
+            entries.forEach(function (e) { var k = weekKey(e.date); if (!wMap[k]) wMap[k] = { n: 0, ot: 0, otW: 0, tr: 0, trW: 0 }; wMap[k].n += e.normalH; wMap[k].ot += e.otH; wMap[k].otW += e.otWeighted; wMap[k].tr += e.trH; wMap[k].trW += e.trWeighted; });
+            var weekly = [['Week Starting', 'Normal Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs']];
+            Object.keys(wMap).sort().forEach(function (k) { var v = wMap[k]; weekly.push([k, +v.n.toFixed(2), +v.ot.toFixed(2), +v.otW.toFixed(2), +v.tr.toFixed(2), +v.trW.toFixed(2), +(v.n + v.otW + v.trW).toFixed(2)]); });
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(weekly), 'Weekly Summary');
+
+            var mMap = {};
+            entries.forEach(function (e) { var k = monthKey(e.date); if (!mMap[k]) mMap[k] = { n: 0, ot: 0, otW: 0, tr: 0, trW: 0 }; mMap[k].n += e.normalH; mMap[k].ot += e.otH; mMap[k].otW += e.otWeighted; mMap[k].tr += e.trH; mMap[k].trW += e.trWeighted; });
+            var monthly = [['Month', 'Normal Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs']];
+            Object.keys(mMap).sort().forEach(function (k) { var v = mMap[k]; monthly.push([k, +v.n.toFixed(2), +v.ot.toFixed(2), +v.otW.toFixed(2), +v.tr.toFixed(2), +v.trW.toFixed(2), +(v.n + v.otW + v.trW).toFixed(2)]); });
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(monthly), 'Monthly Summary');
+
+            XLSX.writeFile(wb, 'BMS_Work_Hours_' + new Date().toISOString().slice(0, 10) + '.xlsx');
+        }
+    </script>
+</body>
+
+</html>
