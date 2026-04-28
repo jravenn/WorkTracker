@@ -39,28 +39,87 @@
             min-height: 100vh
         }
 
+        /* BANNER */
+        #bannerWrap {
+            background: linear-gradient(90deg, #1a2744, #172135);
+            border-bottom: 1px solid #1e3a5f;
+            display: none
+        }
+
+        .banner-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 9px 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .banner-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(–muted);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-right: 2px
+        }
+
+        .banner-chip {
+            background: #0f172a;
+            border: 1px solid #1e3a5f;
+            border-radius: 20px;
+            padding: 3px 11px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            gap: 4px;
+            align-items: center
+        }
+
+        .banner-chip span {
+            color: var(–dim);
+            font-size: 11px;
+            font-weight: 500
+        }
+
+        .banner-month {
+            font-size: 11px;
+            color: var(–dim);
+            margin-left: auto
+        }
+
+        /* HEADER */
         header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border-bottom: 1px solid var(--border)
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-bottom: 1px solid var(–border)
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 24px 12px
+            padding: 18px 24px 10px;
+            gap: 10px;
+            flex-wrap: wrap
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 23px;
             font-weight: 800;
             letter-spacing: -0.5px
         }
 
         .sublogo {
-            font-size: 13px;
-            color: var(--dim);
-            margin-top: 3px
+            font-size: 12px;
+            color: var(–dim);
+            margin-top: 2px
+        }
+
+        .header-btns {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap
         }
 
         .export-btn {
@@ -68,9 +127,9 @@
             color: #000;
             border: none;
             border-radius: 10px;
-            padding: 10px 20px;
+            padding: 9px 16px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             font-family: inherit
         }
@@ -80,9 +139,25 @@
             cursor: not-allowed
         }
 
+        .hdr-btn {
+            background: #1e293b;
+            border: 1px solid var(–border);
+            color: var(–muted);
+            border-radius: 10px;
+            padding: 9px 13px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit
+        }
+
+        .hdr-btn:hover {
+            color: var(–text)
+        }
+
         .tabs {
             display: flex;
-            gap: 4px;
+            gap: 2px;
             padding: 0 16px
         }
 
@@ -90,8 +165,8 @@
             background: transparent;
             border: none;
             border-bottom: 2px solid transparent;
-            color: var(--dim);
-            padding: 10px 18px;
+            color: var(–dim);
+            padding: 9px 15px;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
@@ -100,23 +175,24 @@
         }
 
         .tab-btn.active {
-            color: var(--text);
-            border-bottom-color: var(--blue)
+            color: var(–text);
+            border-bottom-color: var(–blue)
         }
 
+        /* LAYOUT */
         .content {
-            max-width: 880px;
+            max-width: 920px;
             margin: 0 auto;
-            padding: 24px 16px;
+            padding: 22px 16px;
             display: flex;
             flex-direction: column;
-            gap: 20px
+            gap: 18px
         }
 
         .tab-panel {
             display: none;
             flex-direction: column;
-            gap: 20px
+            gap: 18px
         }
 
         .tab-panel.active {
@@ -124,64 +200,80 @@
         }
 
         .card {
-            background: var(--surface);
+            background: var(–surface);
             border-radius: 16px;
-            padding: 24px;
-            border: 1px solid var(--border)
+            padding: 22px;
+            border: 1px solid var(–border)
         }
 
         .card-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px
+            margin-bottom: 18px;
+            flex-wrap: wrap
         }
 
         .card-icon {
-            font-size: 22px
+            font-size: 20px
         }
 
         .card-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             flex: 1
         }
 
+        /* FORM */
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 14px
+            gap: 13px;
+            margin-bottom: 13px
         }
 
         .form-grid-3 {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 14px
+            gap: 13px;
+            margin-bottom: 13px
+        }
+
+        .form-grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 13px;
+            margin-bottom: 13px
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 5px
+            gap: 4px
         }
 
         .field-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--muted);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(–muted);
             text-transform: uppercase;
             letter-spacing: .5px
         }
 
         .auto-tag {
             font-size: 11px;
-            color: var(--dim);
+            color: var(–dim);
             font-weight: 400;
             text-transform: none;
             letter-spacing: 0;
-            margin-left: 6px
+            margin-left: 5px
+        }
+
+        .bh-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-left: 5px
         }
 
         input[type=date],
@@ -189,11 +281,11 @@
         input[type=text],
         input[type=number],
         select {
-            background: var(--surface2);
-            border: 1px solid var(--border);
+            background: var(–surface2);
+            border: 1px solid var(–border);
             border-radius: 8px;
-            padding: 9px 12px;
-            color: var(--text);
+            padding: 8px 11px;
+            color: var(–text);
             font-size: 14px;
             font-family: inherit;
             outline: none;
@@ -202,7 +294,7 @@
 
         input:focus,
         select:focus {
-            border-color: var(--blue)
+            border-color: var(–blue)
         }
 
         select option {
@@ -210,16 +302,16 @@
         }
 
         .toggle-row {
-            margin-bottom: 10px;
+            margin-bottom: 9px;
             display: flex;
             align-items: center;
             gap: 8px
         }
 
         .toggle-row input[type=checkbox] {
-            width: 17px;
-            height: 17px;
-            accent-color: var(--blue);
+            width: 16px;
+            height: 16px;
+            accent-color: var(–blue);
             cursor: pointer
         }
 
@@ -233,62 +325,127 @@
         .sub-form {
             background: #162032;
             border-radius: 10px;
-            padding: 16px;
-            margin-bottom: 14px;
+            padding: 15px;
+            margin-bottom: 13px;
             border: 1px solid #243447
         }
 
         .sub-section-title {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--green);
+            color: var(–green);
             text-transform: uppercase;
             letter-spacing: .6px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px
+            margin-bottom: 9px
         }
 
         .divider {
             border: none;
             border-top: 1px solid #243447;
-            margin: 12px 0
+            margin: 11px 0
         }
 
         .preview-box {
             background: #0d1a2a;
             border: 1px solid #1e3a52;
             border-radius: 8px;
-            padding: 10px 14px;
+            padding: 9px 13px;
             font-size: 12px;
             color: #7dd3fc;
             margin-top: 4px;
-            line-height: 1.7
+            line-height: 1.75
         }
 
         .preview-box b {
             color: #e2e8f0
         }
 
+        .hint {
+            font-size: 11px;
+            color: var(–dim);
+            margin-top: 2px
+        }
+
+        /* WARNINGS */
+        .warn-box {
+            background: #2d1a0e;
+            border: 1px solid #92400e;
+            border-radius: 8px;
+            padding: 9px 13px;
+            font-size: 12px;
+            color: #fbbf24;
+            margin-bottom: 11px;
+            line-height: 1.75;
+            display: none
+        }
+
+        .warn-box b {
+            color: #fde68a
+        }
+
+        /* BUTTONS */
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap
+        }
+
         .add-btn {
-            width: 100%;
+            flex: 1;
             background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: #fff;
             border: none;
             border-radius: 10px;
-            padding: 12px;
+            padding: 11px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
             font-family: inherit;
-            margin-top: 8px
+            min-width: 120px
         }
 
+        .add-btn.editing {
+            background: linear-gradient(135deg, #10b981, #059669)
+        }
+
+        .dup-btn {
+            background: #1e293b;
+            border: 1px solid var(–border);
+            color: var(–muted);
+            border-radius: 10px;
+            padding: 11px 13px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit;
+            white-space: nowrap
+        }
+
+        .dup-btn:hover {
+            color: var(–text);
+            border-color: var(–muted)
+        }
+
+        .cancel-btn {
+            background: #374151;
+            border: none;
+            color: #9ca3af;
+            border-radius: 10px;
+            padding: 11px 13px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit;
+            display: none
+        }
+
+        /* ENTRIES */
         .entry {
-            border-top: 1px solid var(--border);
-            padding-top: 14px;
-            margin-top: 14px
+            border-top: 1px solid var(–border);
+            padding-top: 13px;
+            margin-top: 13px;
+            position: relative
         }
 
         .entry-header {
@@ -297,13 +454,13 @@
             align-items: center;
             cursor: pointer;
             flex-wrap: wrap;
-            gap: 8px
+            gap: 7px
         }
 
         .entry-left {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
             flex-wrap: wrap
         }
 
@@ -316,14 +473,24 @@
             font-size: 11px;
             font-weight: 700;
             color: #fff;
-            padding: 2px 9px;
+            padding: 2px 8px;
+            border-radius: 20px
+        }
+
+        .warn-badge {
+            font-size: 11px;
+            font-weight: 700;
+            color: #fbbf24;
+            background: #2d1a0e;
+            border: 1px solid #92400e;
+            padding: 2px 8px;
             border-radius: 20px
         }
 
         .entry-right {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 7px;
             flex-wrap: wrap
         }
 
@@ -333,8 +500,8 @@
             align-items: center;
             border: 1px solid;
             border-radius: 8px;
-            padding: 3px 10px;
-            min-width: 72px
+            padding: 3px 9px;
+            min-width: 68px
         }
 
         .pill-label {
@@ -344,19 +511,35 @@
         }
 
         .pill-value {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-            color: var(--text)
+            color: var(–text)
         }
 
         .pill-sub {
             font-size: 10px;
-            color: var(--muted)
+            color: var(–muted)
         }
 
         .chevron {
-            color: var(--dim);
-            font-size: 12px
+            color: var(–dim);
+            font-size: 11px
+        }
+
+        .entry-actions {
+            display: flex;
+            gap: 4px
+        }
+
+        .edit-btn {
+            background: #1e3a5f;
+            border: none;
+            color: #7dd3fc;
+            border-radius: 6px;
+            padding: 4px 9px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit
         }
 
         .del-btn {
@@ -364,17 +547,66 @@
             border: none;
             color: #fca5a5;
             border-radius: 6px;
-            padding: 3px 8px;
+            padding: 4px 9px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: inherit
+        }
+
+        /* Inline delete confirm */
+        .del-confirm {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #1e293b;
+            border: 1px solid #ef4444;
+            border-radius: 10px;
+            padding: 10px 14px;
+            z-index: 10;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .5)
+        }
+
+        .del-confirm.show {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .del-confirm-msg {
+            font-size: 13px;
+            color: #fca5a5
+        }
+
+        .del-confirm-yes {
+            background: #ef4444;
+            border: none;
+            color: #fff;
+            border-radius: 6px;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: inherit
+        }
+
+        .del-confirm-no {
+            background: #374151;
+            border: none;
+            color: #9ca3af;
+            border-radius: 6px;
+            padding: 4px 10px;
             cursor: pointer;
             font-size: 12px;
             font-family: inherit
         }
 
         .entry-detail {
-            background: var(--surface2);
+            background: var(–surface2);
             border-radius: 8px;
-            padding: 12px;
-            margin-top: 8px;
+            padding: 11px;
+            margin-top: 7px;
             display: none
         }
 
@@ -391,27 +623,74 @@
         .detail-sub {
             font-size: 12px;
             font-weight: 700;
-            color: var(--green);
-            margin: 8px 0 3px
+            color: var(–green);
+            margin: 7px 0 3px
         }
 
         .seg-row {
-            margin: 2px 0 2px 16px;
+            margin: 2px 0 2px 14px;
             font-size: 12px;
-            color: var(--muted)
+            color: var(–muted)
         }
 
+        /* EARNINGS */
+        .earn-box {
+            background: linear-gradient(135deg, #0d2818, #0a1f14);
+            border: 1px solid #065f46;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-top: 10px
+        }
+
+        .earn-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(–green);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 8px
+        }
+
+        .earn-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px
+        }
+
+        .earn-item {
+            text-align: center
+        }
+
+        .earn-label {
+            font-size: 10px;
+            color: var(–dim);
+            font-weight: 600;
+            text-transform: uppercase
+        }
+
+        .earn-val {
+            font-size: 16px;
+            font-weight: 800;
+            color: #34d399
+        }
+
+        .earn-sub {
+            font-size: 10px;
+            color: var(–dim)
+        }
+
+        /* DASHBOARD */
         .view-toggle {
             display: flex;
-            gap: 6px
+            gap: 5px
         }
 
         .view-btn {
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            color: var(--dim);
+            background: var(–surface2);
+            border: 1px solid var(–border);
+            color: var(–dim);
             border-radius: 8px;
-            padding: 6px 14px;
+            padding: 5px 13px;
             font-size: 13px;
             cursor: pointer;
             font-family: inherit
@@ -424,84 +703,94 @@
         }
 
         .dash-group {
-            margin-bottom: 28px
+            margin-bottom: 26px
         }
 
         .dash-group-header {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
-            color: var(--muted);
-            margin-bottom: 12px;
+            color: var(–muted);
+            margin-bottom: 11px;
             padding-bottom: 6px;
-            border-bottom: 1px solid var(--border)
+            border-bottom: 1px solid var(–border)
         }
 
         .dash-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 12px
+            gap: 11px
         }
 
         .stat-box {
-            background: var(--surface2);
+            background: var(–surface2);
             border-radius: 12px;
-            padding: 14px 12px;
+            padding: 13px 11px;
             text-align: center;
-            border: 1px solid var(--border)
+            border: 1px solid var(–border)
         }
 
         .stat-icon {
-            font-size: 20px;
+            font-size: 19px;
             margin-bottom: 4px
         }
 
         .stat-label {
-            font-size: 11px;
-            color: var(--dim);
-            font-weight: 600;
+            font-size: 10px;
+            color: var(–dim);
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .4px
         }
 
         .stat-val {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
             margin: 4px 0 2px
         }
 
         .stat-sub {
             font-size: 11px;
-            color: var(--dim);
+            color: var(–dim);
             min-height: 14px
         }
 
+        .earn-stat {
+            border-color: #065f46 !important;
+            background: linear-gradient(135deg, #0d2818, #0a1f14) !important
+        }
+
+        .earn-stat .stat-val {
+            color: #34d399
+        }
+
+        /* RATES */
         .rates-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px
+            gap: 22px
         }
 
         .rates-section {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            color: var(--blue);
+            color: var(–blue);
             text-transform: uppercase;
             letter-spacing: .5px;
-            margin-bottom: 10px
+            margin-bottom: 9px
         }
 
         .rate-row {
             display: flex;
             gap: 8px;
-            padding: 6px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 5px 0;
+            border-bottom: 1px solid var(–border);
             font-size: 13px;
             align-items: center
         }
 
         .rate-day {
-            color: var(--muted);
-            width: 120px;
+            color: var(–muted);
+            width: 115px;
             flex-shrink: 0;
             font-size: 12px
         }
@@ -513,27 +802,202 @@
 
         .rate-mult {
             font-weight: 800;
-            color: var(--amber);
+            color: var(–amber);
             font-size: 14px
+        }
+
+        .bh-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px 22px;
+            margin-top: 12px
+        }
+
+        .bh-row {
+            display: flex;
+            gap: 8px;
+            padding: 5px 0;
+            border-bottom: 1px solid #1e293b;
+            font-size: 12px;
+            align-items: center
+        }
+
+        .bh-date {
+            color: var(–muted);
+            width: 100px;
+            flex-shrink: 0
+        }
+
+        .bh-name {
+            color: #cbd5e1;
+            flex: 1
+        }
+
+        .bh-past {
+            opacity: .4
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .75);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px
+        }
+
+        .modal-overlay.open {
+            display: flex
+        }
+
+        .modal {
+            background: var(–surface);
+            border-radius: 16px;
+            padding: 26px;
+            border: 1px solid var(–border);
+            width: 100%;
+            max-width: 480px;
+            max-height: 92vh;
+            overflow-y: auto
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px
+        }
+
+        .modal-title {
+            font-size: 17px;
+            font-weight: 700
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(–muted);
+            font-size: 20px;
+            cursor: pointer;
+            line-height: 1
+        }
+
+        .save-btn-green {
+            width: 100%;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 11px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: inherit;
+            margin-top: 14px
+        }
+
+        .modal-note {
+            font-size: 12px;
+            color: var(–dim);
+            margin-top: 8px;
+            text-align: center
+        }
+
+        /* IMPORT / EXPORT DATA */
+        .data-section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(–text);
+            margin-bottom: 10px
+        }
+
+        .data-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: wrap
+        }
+
+        .data-btn {
+            flex: 1;
+            border: none;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit;
+            min-width: 130px
+        }
+
+        .data-btn-export {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: #fff
+        }
+
+        .data-btn-import {
+            background: #1e293b;
+            border: 1px solid var(–border);
+            color: var(–muted)
+        }
+
+        .data-btn-import:hover {
+            color: var(–text)
+        }
+
+        #importFileInput {
+            display: none
+        }
+
+        .danger-btn {
+            background: #7f1d1d;
+            color: #fca5a5;
+            border: none;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: inherit;
+            width: 100%
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: #10b981;
+            color: #fff;
+            padding: 9px 17px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 13px;
+            z-index: 200;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .5);
+            transition: opacity .4s;
+            pointer-events: none
+        }
+
+        .toast.error {
+            background: #ef4444
         }
 
         .empty-msg {
             color: #475569;
             text-align: center;
-            padding: 32px 0;
+            padding: 30px 0;
             font-size: 14px
-        }
-
-        .hint {
-            font-size: 11px;
-            color: var(--dim);
-            margin-top: 3px
         }
 
         @media(max-width:640px) {
 
             .form-grid,
-            .form-grid-3 {
+            .form-grid-3,
+            .form-grid-4 {
                 grid-template-columns: 1fr
             }
 
@@ -541,22 +1005,49 @@
                 grid-template-columns: 1fr 1fr
             }
 
-            .rates-grid {
+            .earn-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .rates-grid,
+            .bh-grid {
                 grid-template-columns: 1fr
             }
         }
     </style>
+
 </head>
 
 <body>
+
+    <!-- BANNER -->
+
+    <div id="bannerWrap">
+        <div class="banner-inner">
+            <span class="banner-label">&#128197; This Month</span>
+            <div class="banner-chip" style="color:#3b82f6">&#128336;<span>Normal</span><b id="bnNorm">0.00h</b></div>
+            <div class="banner-chip" style="color:#f59e0b">&#9889;<span>OT</span><b id="bnOT">0.00h</b></div>
+            <div class="banner-chip" style="color:#10b981">&#128663;<span>Travel</span><b id="bnTr">0.00h</b></div>
+            <div class="banner-chip" style="color:#6366f1">&#8721;<span>Effective</span><b id="bnTot">0.00h</b></div>
+            <div class="banner-chip" id="bnPayChip" style="color:#34d399;display:none">&#128176;<span>Est. Earn</span><b
+                    id="bnPay">&euro;0</b></div>
+            <span class="banner-month" id="bnMonth"></span>
+        </div>
+    </div>
+
+    <!-- HEADER -->
 
     <header>
         <div class="header-inner">
             <div>
                 <div class="logo">BMS Hours</div>
-                <div class="sublogo">Overtime &amp; Travel Calculator</div>
+                <div class="sublogo">Overtime &amp; Travel Calculator &mdash; Ireland</div>
             </div>
-            <button class="export-btn" id="exportBtn" disabled onclick="exportXLSX()">&#8595; Export Excel</button>
+            <div class="header-btns">
+                <button class="hdr-btn" onclick="openDataModal()">&#128190; Backup / Import</button>
+                <button class="hdr-btn" onclick="openSettings()">&#9881; Defaults</button>
+                <button class="export-btn" id="exportBtn" disabled onclick="exportXLSX()">&#8595; Export Excel</button>
+            </div>
         </div>
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('log',this)">&#9201; Log Hours</button>
@@ -573,21 +1064,26 @@
             <div class="card">
                 <div class="card-header">
                     <span class="card-icon">&#9201;</span>
-                    <h2 class="card-title">Log Hours</h2>
+                    <h2 class="card-title" id="formTitle">Log Hours</h2>
                 </div>
 
                 ```
-                <!-- Date & Day -->
+                <div class="warn-box" id="warnBox"></div>
+
                 <div class="form-grid">
                     <div class="form-group">
                         <label class="field-label">Date</label>
-                        <input type="date" id="fDate" onchange="updateAutoTag();updatePreviews()" />
+                        <input type="date" id="fDate" onchange="onDateChange()" />
                     </div>
                     <div class="form-group">
-                        <label class="field-label">Day Type <span class="auto-tag" id="autoTag"></span></label>
-                        <select id="fDayType" onchange="updatePreviews()">
+                        <label class="field-label">
+                            Day Type
+                            <span class="auto-tag" id="autoTag"></span>
+                            <span class="bh-tag" id="bhTag" style="display:none"></span>
+                        </label>
+                        <select id="fDayType" onchange="updatePreviews();checkWarnings()">
                             <option value="">Auto-detect</option>
-                            <option value="weekday">Mon&#8211;Fri</option>
+                            <option value="weekday">Mon&#8211;Fri (Weekday)</option>
                             <option value="saturday">Saturday</option>
                             <option value="sunday">Sunday</option>
                             <option value="bankholiday">Bank Holiday</option>
@@ -595,47 +1091,46 @@
                     </div>
                 </div>
 
-                <!-- Normal hours -->
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="field-label">Work Start (arrived on site)</label>
-                        <input type="time" id="fNormStart" value="08:00" onchange="updatePreviews()" />
+                        <label class="field-label">Work Start (on site)</label>
+                        <input type="time" id="fNormStart" value="08:00" onchange="updatePreviews();checkWarnings()" />
                     </div>
                     <div class="form-group">
                         <label class="field-label">Work End (left site)</label>
-                        <input type="time" id="fNormEnd" value="17:00" onchange="updatePreviews()" />
+                        <input type="time" id="fNormEnd" value="17:00" onchange="updatePreviews();checkWarnings()" />
                     </div>
                 </div>
 
-                <!-- Overtime toggle -->
+                <!-- Overtime -->
                 <div class="toggle-row">
-                    <input type="checkbox" id="chkOT" onchange="toggleSection('otSection',this);updatePreviews()">
+                    <input type="checkbox" id="chkOT"
+                        onchange="toggleSec('otSec',this);updatePreviews();checkWarnings()">
                     <label class="toggle-label-text" for="chkOT">&#9889; Overtime</label>
                 </div>
-                <div id="otSection" class="sub-form" style="display:none">
+                <div id="otSec" class="sub-form" style="display:none">
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="field-label">OT Start</label>
-                            <input type="time" id="fOtStart" value="17:00" onchange="updatePreviews()" />
+                            <input type="time" id="fOtStart" value="17:00"
+                                onchange="updatePreviews();checkWarnings()" />
                         </div>
                         <div class="form-group">
                             <label class="field-label">OT End</label>
-                            <input type="time" id="fOtEnd" value="19:00" onchange="updatePreviews()" />
+                            <input type="time" id="fOtEnd" value="19:00" onchange="updatePreviews();checkWarnings()" />
                         </div>
                     </div>
                     <div id="otPreview" class="preview-box" style="display:none"></div>
                 </div>
 
-                <!-- Travel toggle -->
+                <!-- Travel -->
                 <div class="toggle-row">
                     <input type="checkbox" id="chkTravel"
-                        onchange="toggleSection('travelSection',this);updatePreviews()">
+                        onchange="toggleSec('trSec',this);updatePreviews();checkWarnings()">
                     <label class="toggle-label-text" for="chkTravel">&#128663; Travel Time</label>
                 </div>
-                <div id="travelSection" class="sub-form" style="display:none">
-
-                    <!-- Morning commute -->
-                    <div class="sub-section-title">&#127968; Morning — Home to Work</div>
+                <div id="trSec" class="sub-form" style="display:none">
+                    <div class="sub-section-title">&#127968; Morning &mdash; Home to Work</div>
                     <div class="form-grid-3">
                         <div class="form-group">
                             <label class="field-label">Left Home</label>
@@ -653,16 +1148,14 @@
                         </div>
                     </div>
                     <div id="mornPreview" class="preview-box" style="display:none"></div>
-
                     <hr class="divider" />
-
-                    <!-- Evening commute -->
-                    <div class="sub-section-title">&#127970; Evening — Work to Home</div>
+                    <div class="sub-section-title">&#127970; Evening &mdash; Work to Home</div>
                     <div class="form-grid-3">
                         <div class="form-group">
                             <label class="field-label">Left Work</label>
-                            <input type="time" id="fEveDepart" value="17:00" onchange="updatePreviews()" />
-                            <span class="hint">Set to OT end time if you did overtime</span>
+                            <input type="time" id="fEveDepart" value="17:00"
+                                onchange="updatePreviews();checkWarnings()" />
+                            <span class="hint">Use your OT end time if you did overtime</span>
                         </div>
                         <div class="form-group">
                             <label class="field-label">Journey (hrs)</label>
@@ -676,15 +1169,18 @@
                         </div>
                     </div>
                     <div id="evePreview" class="preview-box" style="display:none"></div>
-
                 </div>
 
-                <!-- Notes -->
-                <div class="form-group" style="margin-bottom:0">
+                <div class="form-group" style="margin-bottom:13px">
                     <label class="field-label">Notes</label>
-                    <input type="text" id="fNotes" placeholder="Job, site, task..." />
+                    <input type="text" id="fNotes" placeholder="Job, site, reference..." />
                 </div>
-                <button class="add-btn" onclick="addEntry()">+ Add Entry</button>
+
+                <div class="btn-row">
+                    <button class="add-btn" id="addBtn" onclick="submitEntry()">+ Add Entry</button>
+                    <button class="cancel-btn" id="cancelBtn" onclick="cancelEdit()">&#10005; Cancel</button>
+                    <button class="dup-btn" onclick="duplicatePrevious()">&#128260; Duplicate Previous</button>
+                </div>
             </div>
 
             <!-- Entries list -->
@@ -712,7 +1208,7 @@
                     </div>
                 </div>
                 <div id="dashContent">
-                    <p class="empty-msg">No entries yet &#8212; log some hours first.</p>
+                    <p class="empty-msg">No entries yet &mdash; log some hours first.</p>
                 </div>
             </div>
         </div>
@@ -735,7 +1231,7 @@
                         <div class="rate-row"><span class="rate-day">Mon&#8211;Fri</span><span class="rate-desc">Nights
                                 22:00&#8211;06:00</span><span class="rate-mult">&#215;2.0</span></div>
                         <div class="rate-row"><span class="rate-day">Sun / Bank Hol</span><span class="rate-desc">All
-                                time worked</span><span class="rate-mult">&#215;2.0</span></div>
+                                hours worked</span><span class="rate-mult">&#215;2.0</span></div>
                         <div class="rate-row" style="border:none"><span class="rate-day">Bank Holiday</span><span
                                 class="rate-desc">(+) Day off in lieu</span><span class="rate-mult">&#8212;</span></div>
                     </div>
@@ -755,155 +1251,321 @@
                                 class="rate-desc">All travel time</span><span class="rate-mult">&#215;2.0</span></div>
                     </div>
                 </div>
+                <div style="margin-top:22px">
+                    <div class="rates-section">&#127981; Irish Public Holidays</div>
+                    <div class="bh-grid" id="bhList"></div>
+                </div>
             </div>
         </div>
 
     </div><!-- /content -->
 
+    <!-- ═══ SETTINGS MODAL ═══ -->
+
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title">&#9881; Defaults &amp; Pay Rate</span>
+                <button class="modal-close" onclick="closeSettings()">&#10005;</button>
+            </div>
+
+            ```
+            <!-- Hourly pay rate -->
+            <div class="sub-section-title" style="margin-bottom:9px">&#128176; Hourly Pay Rate</div>
+            <div class="form-grid" style="margin-bottom:16px">
+                <div class="form-group">
+                    <label class="field-label">Base Hourly Rate (&euro;)</label>
+                    <input type="number" id="defPayRate" min="0" step="0.50" placeholder="e.g. 22.50" />
+                    <span class="hint">Used to estimate earnings. Multipliers apply automatically.</span>
+                </div>
+                <div class="form-group">
+                    <label class="field-label">Currency Symbol</label>
+                    <select id="defCurrency">
+                        <option value="€">€ Euro</option>
+                        <option value="£">£ Sterling</option>
+                        <option value="$">$ Dollar</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Work times -->
+            <div class="sub-section-title">&#128336; Default Work Times</div>
+            <div class="form-grid">
+                <div class="form-group"><label class="field-label">Work Start</label><input type="time"
+                        id="defNormStart" /></div>
+                <div class="form-group"><label class="field-label">Work End</label><input type="time" id="defNormEnd" />
+                </div>
+            </div>
+
+            <!-- Morning commute -->
+            <div class="sub-section-title">&#127968; Morning Commute</div>
+            <div class="form-grid-3">
+                <div class="form-group"><label class="field-label">Leave Home</label><input type="time"
+                        id="defMornDepart" /></div>
+                <div class="form-group"><label class="field-label">Hours</label><input type="number" id="defMornHrs"
+                        min="0" max="12" step="1" /></div>
+                <div class="form-group"><label class="field-label">Mins</label><input type="number" id="defMornMins"
+                        min="0" max="59" step="1" /></div>
+            </div>
+
+            <!-- Evening commute -->
+            <div class="sub-section-title">&#127970; Evening Commute</div>
+            <div class="form-grid-3">
+                <div class="form-group"><label class="field-label">Leave Work</label><input type="time"
+                        id="defEveDepart" /></div>
+                <div class="form-group"><label class="field-label">Hours</label><input type="number" id="defEveHrs"
+                        min="0" max="12" step="1" /></div>
+                <div class="form-group"><label class="field-label">Mins</label><input type="number" id="defEveMins"
+                        min="0" max="59" step="1" /></div>
+            </div>
+
+            <button class="save-btn-green" onclick="saveDefaults()">&#10003; Save Settings</button>
+            ```
+
+        </div>
+    </div>
+
+    <!-- ═══ BACKUP / IMPORT MODAL ═══ -->
+
+    <div class="modal-overlay" id="dataModal">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-title">&#128190; Backup &amp; Import Data</span>
+                <button class="modal-close" onclick="closeDataModal()">&#10005;</button>
+            </div>
+
+            ```
+            <div class="data-section-title">&#8595; Export Backup (JSON)</div>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Save all your entries as a JSON backup file.
+                You can re-import this file at any time to restore your data.</p>
+            <div class="data-row">
+                <button class="data-btn data-btn-export" onclick="exportJSON()">&#128190; Download Backup
+                    (.json)</button>
+            </div>
+
+            <hr style="border:none;border-top:1px solid var(--border);margin:16px 0" />
+
+            <div class="data-section-title">&#8593; Import Backup (JSON)</div>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Select a previously exported backup file to
+                restore your entries.</p>
+            <div class="data-row">
+                <button class="data-btn data-btn-import"
+                    onclick="document.getElementById('importFileInput').click()">&#128193; Choose Backup
+                    File...</button>
+                <input type="file" id="importFileInput" accept=".json" onchange="importJSON(this)" />
+            </div>
+            <div id="importStatus"
+                style="font-size:12px;color:var(--green);margin-top:-6px;margin-bottom:10px;min-height:18px"></div>
+
+            <hr style="border:none;border-top:1px solid var(--border);margin:16px 0" />
+
+            <div class="data-section-title" style="color:#fca5a5">&#9888; Danger Zone</div>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Permanently delete all entries from this
+                device. Make sure you have a backup first.</p>
+            <button class="danger-btn" onclick="clearAllData()">&#128465; Delete All Entries</button>
+            <p class="modal-note">This cannot be undone.</p>
+            ```
+
+        </div>
+    </div>
+
     <script>
-        // ─── State ────────────────────────────────────────────────────────────────────
+        // ═══════════════════════════════════════════════════════════════
+        // IRISH PUBLIC HOLIDAYS — exact dates 2025 / 2026 / 2027
+        // ═══════════════════════════════════════════════════════════════
+        var IRISH_BH = {
+            '2025-01-01': "New Year's Day",
+            '2025-02-03': "St Brigid's Day",
+            '2025-03-17': "St Patrick's Day",
+            '2025-04-21': "Easter Monday",
+            '2025-05-05': "May Bank Holiday",
+            '2025-06-02': "June Bank Holiday",
+            '2025-08-04': "August Bank Holiday",
+            '2025-10-27': "October Bank Holiday",
+            '2025-12-25': "Christmas Day",
+            '2025-12-26': "St Stephen's Day",
+            '2026-01-01': "New Year's Day",
+            '2026-02-02': "St Brigid's Day",
+            '2026-03-17': "St Patrick's Day",
+            '2026-04-06': "Easter Monday",
+            '2026-05-04': "May Bank Holiday",
+            '2026-06-01': "June Bank Holiday",
+            '2026-08-03': "August Bank Holiday",
+            '2026-10-26': "October Bank Holiday",
+            '2026-12-25': "Christmas Day",
+            '2026-12-26': "St Stephen's Day",
+            '2027-01-01': "New Year's Day",
+            '2027-02-01': "St Brigid's Day",
+            '2027-03-17': "St Patrick's Day",
+            '2027-03-29': "Easter Monday",
+            '2027-05-03': "May Bank Holiday",
+            '2027-06-07': "June Bank Holiday",
+            '2027-08-02': "August Bank Holiday",
+            '2027-10-25': "October Bank Holiday",
+            '2027-12-25': "Christmas Day",
+            '2027-12-26': "St Stephen's Day"
+        };
+        function isIrishBH(d) { return !!IRISH_BH[d]; }
+        function getBHName(d) { return IRISH_BH[d] || ''; }
+
+        // ═══════════════════════════════════════════════════════════════
+        // STATE
+        // ═══════════════════════════════════════════════════════════════
         var entries = [];
         var dashView = 'weekly';
+        var editingId = null;
+        var defaults = {
+            payRate: 0, currency: '€',
+            normStart: '08:00', normEnd: '17:00',
+            mornDepart: '07:00', mornHrs: 0, mornMins: 45,
+            eveDepart: '17:00', eveHrs: 0, eveMins: 45
+        };
+
         var DAY_LABELS = { weekday: 'Mon\u2013Fri', saturday: 'Saturday', sunday: 'Sunday', bankholiday: 'Bank Holiday' };
         var DAY_COLORS = { weekday: '#1e40af', saturday: '#7c3aed', sunday: '#b91c1c', bankholiday: '#b45309' };
 
-        // ─── Init ─────────────────────────────────────────────────────────────────────
-        function saveToStorage() {
-            localStorage.setItem('bmsEntries', JSON.stringify(entries));
+        // ═══════════════════════════════════════════════════════════════
+        // STORAGE
+        // ═══════════════════════════════════════════════════════════════
+        function save() {
+            try { localStorage.setItem('bmsEntries', JSON.stringify(entries)); } catch (e) { }
+            try { localStorage.setItem('bmsDefaults', JSON.stringify(defaults)); } catch (e) { }
+        }
+        function loadStorage() {
+            try { var s = localStorage.getItem('bmsEntries'); if (s) entries = JSON.parse(s); } catch (e) { }
+            try { var d = localStorage.getItem('bmsDefaults'); if (d) defaults = Object.assign(defaults, JSON.parse(d)); } catch (e) { }
         }
 
+        // ═══════════════════════════════════════════════════════════════
+        // INIT
+        // ═══════════════════════════════════════════════════════════════
         window.onload = function () {
-            var saved = localStorage.getItem('bmsEntries');
-            if (saved) { try { entries = JSON.parse(saved); } catch (e) { entries = []; } }
-            document.getElementById('fDate').value = new Date().toISOString().slice(0, 10);
-            updateAutoTag();
-            updatePreviews();
+            loadStorage();
+            applyDefaults();
+            document.getElementById('fDate').value = todayStr();
+            updateAutoTag(); updatePreviews(); checkWarnings(); renderBHList();
             if (entries.length) { document.getElementById('exportBtn').disabled = false; renderEntries(); }
+            updateBanner();
         };
 
-        // ─── Tabs ─────────────────────────────────────────────────────────────────────
-        function switchTab(name, btn) {
-            document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active') });
-            document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active') });
-            document.getElementById('tab-' + name).classList.add('active');
-            btn.classList.add('active');
-            if (name === 'dashboard') renderDashboard();
-        }
-        function toggleSection(id, chk) {
-            document.getElementById(id).style.display = chk.checked ? 'block' : 'none';
-            updatePreviews();
-        }
-        function setDashView(v) {
-            dashView = v;
-            document.getElementById('btnWeekly').classList.toggle('active', v === 'weekly');
-            document.getElementById('btnMonthly').classList.toggle('active', v === 'monthly');
-            renderDashboard();
+        function todayStr() { return new Date().toISOString().slice(0, 10); }
+
+        function applyDefaults() {
+            document.getElementById('fNormStart').value = defaults.normStart;
+            document.getElementById('fNormEnd').value = defaults.normEnd;
+            document.getElementById('fMornDepart').value = defaults.mornDepart;
+            document.getElementById('fMornHrs').value = defaults.mornHrs;
+            document.getElementById('fMornMins').value = defaults.mornMins;
+            document.getElementById('fEveDepart').value = defaults.eveDepart;
+            document.getElementById('fEveHrs').value = defaults.eveHrs;
+            document.getElementById('fEveMins').value = defaults.eveMins;
         }
 
-        // ─── Helpers ──────────────────────────────────────────────────────────────────
-        function autoDetectDay(d) {
-            var dow = new Date(d + 'T00:00:00').getDay();
-            return dow === 0 ? 'sunday' : dow === 6 ? 'saturday' : 'weekday';
-        }
-        function updateAutoTag() {
-            var d = document.getElementById('fDate').value;
-            document.getElementById('autoTag').textContent = d ? '(auto: ' + DAY_LABELS[autoDetectDay(d)] + ')' : '';
-        }
-        function getEffectiveDay() {
-            var d = document.getElementById('fDate').value;
-            var m = document.getElementById('fDayType').value;
-            return m || (d ? autoDetectDay(d) : 'weekday');
-        }
-        function timeToH(t) {
-            if (!t) return 0;
-            var p = t.split(':'); return parseInt(p[0]) + parseInt(p[1]) / 60;
-        }
-        function addMinsToTime(t, totalMins) {
-            var base = timeToH(t);
-            return base + totalMins / 60;
-        }
-        function fmtH(h) { return h.toFixed(2) + 'h' }
+        // ═══════════════════════════════════════════════════════════════
+        // HELPERS
+        // ═══════════════════════════════════════════════════════════════
+        function timeToH(t) { if (!t) return 0; var p = t.split(':'); return parseInt(p[0]) + parseInt(p[1]) / 60; }
+        function fmtH(h) { return h.toFixed(2) + 'h'; }
+        function fmtMoney(v) { return defaults.currency + v.toFixed(2); }
         function decToTime(h) {
-            h = ((h % 24) + 24) % 24;
-            var hh = Math.floor(h), mm = Math.round((h - hh) * 60);
-            if (mm === 60) { hh++; mm = 0 }
+            h = ((h % 24) + 24) % 24; var hh = Math.floor(h), mm = Math.round((h - hh) * 60);
+            if (mm === 60) { hh++; mm = 0; }
             return (hh < 10 ? '0' : '') + hh + ':' + (mm < 10 ? '0' : '') + mm;
         }
-        function fmtDate(d) {
-            return new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
-        }
-        function weekKey(d) {
-            var dt = new Date(d + 'T00:00:00'), mon = new Date(dt);
-            mon.setDate(dt.getDate() - ((dt.getDay() + 6) % 7));
-            return mon.toISOString().slice(0, 10);
-        }
-        function monthKey(d) { return d.slice(0, 7) }
-        function wtH(segs) { return segs.reduce(function (s, x) { return s + x.hours * x.multiplier }, 0) }
+        function fmtDate(d) { return new Date(d + 'T12:00:00').toLocaleDateString('en-IE', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' }); }
+        function weekKey(d) { var dt = new Date(d + 'T12:00:00'), m = new Date(dt); m.setDate(dt.getDate() - ((dt.getDay() + 6) % 7)); return m.toISOString().slice(0, 10); }
+        function monthKey(d) { return d.slice(0, 7); }
+        function wtH(segs) { return segs.reduce(function (s, x) { return s + x.hours * x.multiplier; }, 0); }
 
-        // ─── Rate calculators ─────────────────────────────────────────────────────────
+        function detectDayType(d) {
+            if (!d) return 'weekday';
+            if (isIrishBH(d)) return 'bankholiday';
+            var dow = new Date(d + 'T12:00:00').getDay();
+            return dow === 0 ? 'sunday' : dow === 6 ? 'saturday' : 'weekday';
+        }
+        function getEffectiveDay() {
+            var m = document.getElementById('fDayType').value;
+            return m || detectDayType(document.getElementById('fDate').value);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // RATE CALCULATORS
+        // ═══════════════════════════════════════════════════════════════
+        function calcNormalSegs(dayType, durH) {
+            if (!durH || durH <= 0) return [];
+            var isDouble = dayType === 'sunday' || dayType === 'bankholiday';
+            return [{ hours: durH, multiplier: isDouble ? 2.0 : 1.0, label: isDouble ? 'Double Time (Sun/BH)' : 'Standard Rate' }];
+        }
+
         function calcOTSegs(dayType, startH, durH) {
             if (!durH || durH <= 0) return [];
-            if (dayType === 'sunday' || dayType === 'bankholiday') return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
-            var segs = [], remaining = durH, cursor = startH, otUsed = 0;
-            while (remaining > 0.001) {
-                var isNight = cursor >= 22 || cursor < 6;
-                var seg, mult, label;
-                if (isNight) {
-                    var nxt = cursor < 6 ? 6 : 30; seg = Math.min(remaining, nxt - cursor); mult = 2.0; label = 'Double Time (Night)';
-                } else if (otUsed < 4) {
-                    var can = 4 - otUsed, toN = 22 - cursor; seg = Math.min(remaining, can, toN); mult = 1.5; label = 'Time and a Half'; otUsed += seg;
-                } else {
-                    seg = Math.min(remaining, 22 - cursor); mult = 2.0; label = 'Double Time';
-                }
+            if (dayType === 'sunday' || dayType === 'bankholiday')
+                return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
+            var segs = [], rem = durH, cur = startH, otUsed = 0;
+            while (rem > 0.001) {
+                var night = cur >= 22 || cur < 6, seg, mult, lbl;
+                if (night) { var nxt = cur < 6 ? 6 : 30; seg = Math.min(rem, nxt - cur); mult = 2.0; lbl = 'Double Time (Night)'; }
+                else if (otUsed < 4) { var can = 4 - otUsed, toN = 22 - cur; seg = Math.min(rem, can, toN); mult = 1.5; lbl = 'Time and a Half'; otUsed += seg; }
+                else { seg = Math.min(rem, 22 - cur); mult = 2.0; lbl = 'Double Time'; }
                 if (seg <= 0.001) break;
-                segs.push({ hours: seg, multiplier: mult, label: label });
-                cursor += seg; remaining -= seg;
+                segs.push({ hours: seg, multiplier: mult, label: lbl });
+                cur += seg; rem -= seg;
             }
             return segs;
         }
 
-        // Travel segs for weekday use time-of-day bands
         function calcTravelSegs(dayType, startH, durH) {
             if (!durH || durH <= 0) return [];
-            if (dayType === 'sunday' || dayType === 'bankholiday') return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
+            if (dayType === 'sunday' || dayType === 'bankholiday')
+                return [{ hours: durH, multiplier: 2.0, label: 'Double Time' }];
             if (dayType === 'saturday') {
-                var s = [];
-                var f = Math.min(durH, 4);
+                var s = []; var f = Math.min(durH, 4);
                 if (f > 0) s.push({ hours: f, multiplier: 1.5, label: 'Time and a Half' });
                 if (durH > 4) s.push({ hours: durH - 4, multiplier: 2.0, label: 'Double Time' });
                 return s;
             }
-            var segs = [], remaining = durH, cursor = startH % 24;
-            while (remaining > 0.001) {
-                var mult, label, nextB;
-                if (cursor >= 6 && cursor < 18) { mult = 1.0; label = 'Single Rate'; nextB = 18; }
-                else if (cursor >= 18 && cursor < 22) { mult = 1.5; label = 'Time and a Half'; nextB = 22; }
-                else { mult = 2.0; label = 'Double Time'; nextB = cursor < 6 ? 6 : 30; }
-                var seg = Math.min(remaining, nextB - cursor);
+            var segs = [], rem = durH, cur = startH % 24;
+            while (rem > 0.001) {
+                var mult, lbl, nB;
+                if (cur >= 6 && cur < 18) { mult = 1.0; lbl = 'Single Rate'; nB = 18; }
+                else if (cur >= 18 && cur < 22) { mult = 1.5; lbl = 'Time and a Half'; nB = 22; }
+                else { mult = 2.0; lbl = 'Double Time'; nB = cur < 6 ? 6 : 30; }
+                var seg = Math.min(rem, nB - cur);
                 if (seg <= 0.001) break;
-                segs.push({ hours: seg, multiplier: mult, label: label });
-                cursor += seg; remaining -= seg;
+                segs.push({ hours: seg, multiplier: mult, label: lbl });
+                cur += seg; rem -= seg;
             }
             return segs;
         }
 
-        // ─── Live preview builder ─────────────────────────────────────────────────────
-        function buildTravelPreview(departH, durH, dayType, label) {
-            if (durH <= 0) return null;
-            var arriveH = departH + durH;
-            var segs = calcTravelSegs(dayType, departH, durH);
-            var eff = wtH(segs);
-            var lines = '<b>' + label + '</b>: depart ' + decToTime(departH) + ' &rarr; arrive ~' + decToTime(arriveH) + '<br>';
-            segs.forEach(function (s) {
-                lines += '&nbsp;&nbsp;&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' (' + s.label + ') = ' + fmtH(s.hours * s.multiplier) + ' eff.<br>';
-            });
-            lines += '<b>Total: ' + fmtH(durH) + ' raw &rarr; ' + fmtH(eff) + ' effective</b>';
-            return lines;
+        // Estimated earnings for an entry
+        function entryEarnings(e) {
+            if (!defaults.payRate || defaults.payRate <= 0) return null;
+            var r = defaults.payRate;
+            var nW = e.normWeighted !== undefined ? e.normWeighted : e.normalH;
+            return (nW + e.otWeighted + e.trWeighted) * r;
         }
 
+        // ═══════════════════════════════════════════════════════════════
+        // DATE CHANGE & TAG
+        // ═══════════════════════════════════════════════════════════════
+        function onDateChange() { updateAutoTag(); updatePreviews(); checkWarnings(); }
+
+        function updateAutoTag() {
+            var d = document.getElementById('fDate').value;
+            var at = document.getElementById('autoTag'), bt = document.getElementById('bhTag');
+            if (!d) { at.textContent = ''; bt.style.display = 'none'; return; }
+            var dt = detectDayType(d);
+            at.textContent = '(auto: ' + DAY_LABELS[dt] + ')';
+            if (isIrishBH(d)) { bt.innerHTML = '&#127981; ' + getBHName(d); bt.style.display = 'inline'; }
+            else { bt.style.display = 'none'; }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LIVE PREVIEWS
+        // ═══════════════════════════════════════════════════════════════
         function updatePreviews() {
-            var dayType = getEffectiveDay();
-            // OT preview
+            var dt = getEffectiveDay();
             var hasOT = document.getElementById('chkOT').checked;
             var otPrev = document.getElementById('otPreview');
             if (hasOT) {
@@ -911,91 +1573,236 @@
                 var otE = timeToH(document.getElementById('fOtEnd').value);
                 var otDur = Math.max(0, otE - otS);
                 if (otDur > 0) {
-                    var segs = calcOTSegs(dayType, otS, otDur);
-                    var eff = wtH(segs);
-                    var html = '<b>Overtime ' + decToTime(otS) + '&ndash;' + decToTime(otE) + '</b> (' + DAY_LABELS[dayType] + ')<br>';
-                    segs.forEach(function (s) { html += '&nbsp;&nbsp;&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' (' + s.label + ') = ' + fmtH(s.hours * s.multiplier) + ' eff.<br>'; });
-                    html += '<b>Total: ' + fmtH(otDur) + ' raw &rarr; ' + fmtH(eff) + ' effective</b>';
+                    var segs = calcOTSegs(dt, otS, otDur);
+                    var html = '<b>OT ' + decToTime(otS) + '&ndash;' + decToTime(otE) + '</b> (' + DAY_LABELS[dt] + ')<br>';
+                    segs.forEach(function (s) { html += '&nbsp;&rarr; ' + fmtH(s.hours) + '&times;' + s.multiplier + ' (' + s.label + ') = ' + fmtH(s.hours * s.multiplier) + ' eff.<br>'; });
+                    html += '<b>Total: ' + fmtH(otDur) + ' raw &rarr; ' + fmtH(wtH(segs)) + ' effective</b>';
+                    if (defaults.payRate > 0) html += ' &nbsp;&#8776; ' + fmtMoney(wtH(segs) * defaults.payRate);
                     otPrev.innerHTML = html; otPrev.style.display = 'block';
                 } else { otPrev.style.display = 'none'; }
             } else { otPrev.style.display = 'none'; }
 
-            // Travel previews
             var hasTr = document.getElementById('chkTravel').checked;
-            var mPrev = document.getElementById('mornPreview');
-            var ePrev = document.getElementById('evePreview');
+            var mP = document.getElementById('mornPreview'), eP = document.getElementById('evePreview');
             if (hasTr) {
                 var mDep = timeToH(document.getElementById('fMornDepart').value);
-                var mDur = (parseInt(document.getElementById('fMornHrs').value) || 0) * 60 + (parseInt(document.getElementById('fMornMins').value) || 0);
-                var mDurH = mDur / 60;
-                if (mDurH > 0) {
-                    var mp = buildTravelPreview(mDep, mDurH, dayType, 'Morning Travel');
-                    mPrev.innerHTML = mp; mPrev.style.display = 'block';
-                } else { mPrev.style.display = 'none'; }
+                var mH = ((parseInt(document.getElementById('fMornHrs').value) || 0) * 60 + (parseInt(document.getElementById('fMornMins').value) || 0)) / 60;
+                if (mH > 0) {
+                    var ms = calcTravelSegs(dt, mDep, mH);
+                    var mh = '<b>Morning: depart ' + decToTime(mDep) + ' &rarr; ~' + decToTime(mDep + mH) + '</b> (' + DAY_LABELS[dt] + ')<br>';
+                    ms.forEach(function (s) { mh += '&nbsp;&rarr; ' + fmtH(s.hours) + '&times;' + s.multiplier + ' (' + s.label + ') = ' + fmtH(s.hours * s.multiplier) + ' eff.<br>'; });
+                    mh += '<b>' + fmtH(mH) + ' raw &rarr; ' + fmtH(wtH(ms)) + ' effective</b>';
+                    if (defaults.payRate > 0) mh += ' &#8776; ' + fmtMoney(wtH(ms) * defaults.payRate);
+                    mP.innerHTML = mh; mP.style.display = 'block';
+                } else { mP.style.display = 'none'; }
 
                 var eDep = timeToH(document.getElementById('fEveDepart').value);
-                var eDur = (parseInt(document.getElementById('fEveHrs').value) || 0) * 60 + (parseInt(document.getElementById('fEveMins').value) || 0);
-                var eDurH = eDur / 60;
-                if (eDurH > 0) {
-                    var ep = buildTravelPreview(eDep, eDurH, dayType, 'Evening Travel');
-                    ePrev.innerHTML = ep; ePrev.style.display = 'block';
-                } else { ePrev.style.display = 'none'; }
-            } else { mPrev.style.display = 'none'; ePrev.style.display = 'none'; }
+                var eH = ((parseInt(document.getElementById('fEveHrs').value) || 0) * 60 + (parseInt(document.getElementById('fEveMins').value) || 0)) / 60;
+                if (eH > 0) {
+                    var es = calcTravelSegs(dt, eDep, eH);
+                    var eh = '<b>Evening: depart ' + decToTime(eDep) + ' &rarr; ~' + decToTime(eDep + eH) + '</b> (' + DAY_LABELS[dt] + ')<br>';
+                    es.forEach(function (s) { eh += '&nbsp;&rarr; ' + fmtH(s.hours) + '&times;' + s.multiplier + ' (' + s.label + ') = ' + fmtH(s.hours * s.multiplier) + ' eff.<br>'; });
+                    eh += '<b>' + fmtH(eH) + ' raw &rarr; ' + fmtH(wtH(es)) + ' effective</b>';
+                    if (defaults.payRate > 0) eh += ' &#8776; ' + fmtMoney(wtH(es) * defaults.payRate);
+                    eP.innerHTML = eh; eP.style.display = 'block';
+                } else { eP.style.display = 'none'; }
+            } else { mP.style.display = 'none'; eP.style.display = 'none'; }
         }
 
-        // ─── Add entry ────────────────────────────────────────────────────────────────
-        function addEntry() {
+        // ═══════════════════════════════════════════════════════════════
+        // WARNINGS
+        // ═══════════════════════════════════════════════════════════════
+        function checkWarnings() {
+            var warns = [];
             var date = document.getElementById('fDate').value;
-            if (!date) { alert('Please select a date.'); return; }
-            var dayType = getEffectiveDay();
+            var nS = timeToH(document.getElementById('fNormStart').value);
+            var nE = timeToH(document.getElementById('fNormEnd').value);
+            var hasOT = document.getElementById('chkOT').checked;
+            var oS = timeToH(document.getElementById('fOtStart').value);
+            var oE = timeToH(document.getElementById('fOtEnd').value);
+            var hasTr = document.getElementById('chkTravel').checked;
+            var eDep = timeToH(document.getElementById('fEveDepart').value);
+
+            if (date && editingId === null) {
+                if (entries.find(function (e) { return e.date === date; }))
+                    warns.push('<b>&#9888; Duplicate:</b> An entry already exists for ' + fmtDate(date) + '. Use Edit if you want to change it.');
+            }
+            if (nE > 0 && nE <= nS) warns.push('<b>&#9888; Work times:</b> Work end is before or equal to work start.');
+            if (nE - nS > 16) warns.push('<b>&#9888; Long shift:</b> Normal hours exceed 16h &mdash; please double-check.');
+            if (hasOT && oE <= oS) warns.push('<b>&#9888; OT times:</b> OT end is before or equal to OT start.');
+            if (hasOT && oS < nE) warns.push('<b>&#9888; OT overlap:</b> OT starts (' + decToTime(oS) + ') before Work End (' + decToTime(nE) + ').');
+            if (hasTr && hasOT && eDep < oE) warns.push('<b>&#9888; Evening travel:</b> Left work (' + decToTime(eDep) + ') before OT ended (' + decToTime(oE) + '). Did you mean ' + decToTime(oE) + '?');
+
+            var box = document.getElementById('warnBox');
+            box.innerHTML = warns.join('<br>');
+            box.style.display = warns.length ? 'block' : 'none';
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // BUILD ENTRY
+        // ═══════════════════════════════════════════════════════════════
+        function buildEntry(id) {
+            var date = document.getElementById('fDate').value;
+            if (!date) return null;
+            var dt = getEffectiveDay();
             var normStart = document.getElementById('fNormStart').value;
             var normEnd = document.getElementById('fNormEnd').value;
             var normalH = Math.max(0, timeToH(normEnd) - timeToH(normStart));
-
-            // OT
+            var normSegs = calcNormalSegs(dt, normalH);
             var hasOT = document.getElementById('chkOT').checked;
             var otStart = document.getElementById('fOtStart').value;
             var otEnd = document.getElementById('fOtEnd').value;
             var otH = hasOT ? Math.max(0, timeToH(otEnd) - timeToH(otStart)) : 0;
-            var otSegs = hasOT ? calcOTSegs(dayType, timeToH(otStart), otH) : [];
-
-            // Travel
+            var otSegs = hasOT ? calcOTSegs(dt, timeToH(otStart), otH) : [];
             var hasTr = document.getElementById('chkTravel').checked;
-
-            // Morning
             var mDep = timeToH(document.getElementById('fMornDepart').value);
-            var mMins = (parseInt(document.getElementById('fMornHrs').value) || 0) * 60 + (parseInt(document.getElementById('fMornMins').value) || 0);
-            var mH = hasTr ? mMins / 60 : 0;
-            var mSegs = hasTr && mH > 0 ? calcTravelSegs(dayType, mDep, mH) : [];
-
-            // Evening
+            var mH = hasTr ? ((parseInt(document.getElementById('fMornHrs').value) || 0) * 60 + (parseInt(document.getElementById('fMornMins').value) || 0)) / 60 : 0;
+            var mSegs = hasTr && mH > 0 ? calcTravelSegs(dt, mDep, mH) : [];
             var eDep = timeToH(document.getElementById('fEveDepart').value);
-            var eMins = (parseInt(document.getElementById('fEveHrs').value) || 0) * 60 + (parseInt(document.getElementById('fEveMins').value) || 0);
-            var eH = hasTr ? eMins / 60 : 0;
-            var eSegs = hasTr && eH > 0 ? calcTravelSegs(dayType, eDep, eH) : [];
-
-            var trH = mH + eH;
-            var trWeighted = wtH(mSegs) + wtH(eSegs);
-
-            var notes = document.getElementById('fNotes').value;
-
-            entries.unshift({
-                id: Date.now(), date: date, dayType: dayType,
+            var eH = hasTr ? ((parseInt(document.getElementById('fEveHrs').value) || 0) * 60 + (parseInt(document.getElementById('fEveMins').value) || 0)) / 60 : 0;
+            var eSegs = hasTr && eH > 0 ? calcTravelSegs(dt, eDep, eH) : [];
+            return {
+                id: id || Date.now(), date: date, dayType: dt,
                 normStart: normStart, normEnd: normEnd, normalH: normalH,
+                normSegs: normSegs, normWeighted: wtH(normSegs),
                 hasOT: hasOT, otStart: otStart, otEnd: otEnd, otH: otH, otSegs: otSegs, otWeighted: wtH(otSegs),
                 hasTr: hasTr,
                 mDep: mDep, mH: mH, mSegs: mSegs, mWeighted: wtH(mSegs),
                 eDep: eDep, eH: eH, eSegs: eSegs, eWeighted: wtH(eSegs),
-                trH: trH, trWeighted: trWeighted,
-                notes: notes
-            });
-            document.getElementById('fNotes').value = '';
-            document.getElementById('exportBtn').disabled = false;
-            renderEntries();
-            saveToStorage();
+                trH: mH + eH, trWeighted: wtH(mSegs) + wtH(eSegs),
+                notes: document.getElementById('fNotes').value
+            };
         }
 
-        // ─── Render entries ───────────────────────────────────────────────────────────
+        // ═══════════════════════════════════════════════════════════════
+        // SUBMIT (Add or Save Edit)
+        // ═══════════════════════════════════════════════════════════════
+        function submitEntry() {
+            if (!document.getElementById('fDate').value) { alert('Please select a date.'); return; }
+            if (editingId !== null) {
+                var upd = buildEntry(editingId);
+                var idx = entries.findIndex(function (e) { return e.id === editingId; });
+                if (idx > -1) entries[idx] = upd;
+                cancelEdit(); toast('Entry updated!');
+            } else {
+                entries.unshift(buildEntry(null));
+                document.getElementById('fNotes').value = '';
+                document.getElementById('exportBtn').disabled = false;
+                toast('Entry added!');
+            }
+            renderEntries(); updateBanner(); save();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // EDIT
+        // ═══════════════════════════════════════════════════════════════
+        function startEdit(id) {
+            var e = entries.find(function (x) { return x.id === id; });
+            if (!e) return;
+            editingId = id;
+            document.getElementById('fDate').value = e.date;
+            document.getElementById('fDayType').value =
+                e.dayType === 'bankholiday' ? 'bankholiday' :
+                    e.dayType === 'sunday' ? 'sunday' :
+                        e.dayType === 'saturday' ? 'saturday' : '';
+            document.getElementById('fNormStart').value = e.normStart;
+            document.getElementById('fNormEnd').value = e.normEnd;
+            document.getElementById('chkOT').checked = e.hasOT;
+            document.getElementById('otSec').style.display = e.hasOT ? 'block' : 'none';
+            document.getElementById('fOtStart').value = e.otStart || '17:00';
+            document.getElementById('fOtEnd').value = e.otEnd || '19:00';
+            document.getElementById('chkTravel').checked = e.hasTr;
+            document.getElementById('trSec').style.display = e.hasTr ? 'block' : 'none';
+            document.getElementById('fMornDepart').value = decToTime(e.mDep || 0);
+            var mm = Math.round((e.mH || 0) * 60);
+            document.getElementById('fMornHrs').value = Math.floor(mm / 60);
+            document.getElementById('fMornMins').value = mm % 60;
+            document.getElementById('fEveDepart').value = decToTime(e.eDep || 0);
+            var em = Math.round((e.eH || 0) * 60);
+            document.getElementById('fEveHrs').value = Math.floor(em / 60);
+            document.getElementById('fEveMins').value = em % 60;
+            document.getElementById('fNotes').value = e.notes || '';
+            document.getElementById('formTitle').textContent = 'Edit Entry';
+            document.getElementById('addBtn').innerHTML = '&#10003; Save Changes';
+            document.getElementById('addBtn').classList.add('editing');
+            document.getElementById('cancelBtn').style.display = 'block';
+            // Switch to log tab
+            document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+            document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+            document.getElementById('tab-log').classList.add('active');
+            document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            updateAutoTag(); updatePreviews(); checkWarnings();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function cancelEdit() {
+            editingId = null;
+            document.getElementById('formTitle').textContent = 'Log Hours';
+            document.getElementById('addBtn').innerHTML = '+ Add Entry';
+            document.getElementById('addBtn').classList.remove('editing');
+            document.getElementById('cancelBtn').style.display = 'none';
+            document.getElementById('fDate').value = todayStr();
+            document.getElementById('fDayType').value = '';
+            document.getElementById('chkOT').checked = false;
+            document.getElementById('otSec').style.display = 'none';
+            document.getElementById('chkTravel').checked = false;
+            document.getElementById('trSec').style.display = 'none';
+            document.getElementById('fNotes').value = '';
+            applyDefaults(); updateAutoTag(); updatePreviews(); checkWarnings();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DUPLICATE PREVIOUS
+        // ═══════════════════════════════════════════════════════════════
+        function duplicatePrevious() {
+            if (!entries.length) { toast('No previous entry to duplicate.', 'error'); return; }
+            var p = entries[0];
+            document.getElementById('fDate').value = todayStr();
+            document.getElementById('fDayType').value = '';
+            document.getElementById('fNormStart').value = p.normStart;
+            document.getElementById('fNormEnd').value = p.normEnd;
+            document.getElementById('chkOT').checked = p.hasOT;
+            document.getElementById('otSec').style.display = p.hasOT ? 'block' : 'none';
+            document.getElementById('fOtStart').value = p.otStart || '17:00';
+            document.getElementById('fOtEnd').value = p.otEnd || '19:00';
+            document.getElementById('chkTravel').checked = p.hasTr;
+            document.getElementById('trSec').style.display = p.hasTr ? 'block' : 'none';
+            document.getElementById('fMornDepart').value = decToTime(p.mDep || 0);
+            var mm = Math.round((p.mH || 0) * 60);
+            document.getElementById('fMornHrs').value = Math.floor(mm / 60);
+            document.getElementById('fMornMins').value = mm % 60;
+            document.getElementById('fEveDepart').value = decToTime(p.eDep || 0);
+            var em = Math.round((p.eH || 0) * 60);
+            document.getElementById('fEveHrs').value = Math.floor(em / 60);
+            document.getElementById('fEveMins').value = em % 60;
+            document.getElementById('fNotes').value = p.notes || '';
+            updateAutoTag(); updatePreviews(); checkWarnings();
+            toast('Previous entry loaded \u2014 adjust as needed');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DELETE — inline confirm (no browser confirm() dialog)
+        // ═══════════════════════════════════════════════════════════════
+        function askDelete(id) {
+            // Close any other open confirm boxes first
+            document.querySelectorAll('.del-confirm.show').forEach(function (el) { el.classList.remove('show'); });
+            var box = document.getElementById('delconf-' + id);
+            if (box) box.classList.add('show');
+        }
+        function cancelDelete(id) {
+            var box = document.getElementById('delconf-' + id);
+            if (box) box.classList.remove('show');
+        }
+        function confirmDelete(id) {
+            entries = entries.filter(function (e) { return e.id !== id; });
+            if (!entries.length) document.getElementById('exportBtn').disabled = true;
+            renderEntries(); renderDashboard(); updateBanner(); save();
+            toast('Entry deleted');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // RENDER ENTRIES
+        // ═══════════════════════════════════════════════════════════════
         function renderEntries() {
             var list = document.getElementById('entriesList');
             var card = document.getElementById('entriesCard');
@@ -1003,60 +1810,111 @@
             card.style.display = 'block';
             document.getElementById('entriesTitle').textContent = 'Logged Entries (' + entries.length + ')';
 
-            list.innerHTML = entries.map(function (e) {
-                var avgOT = e.otH > 0 ? (e.otWeighted / e.otH).toFixed(2) : null;
-                var avgTr = e.trH > 0 ? (e.trWeighted / e.trH).toFixed(2) : null;
+            var sorted = entries.slice().sort(function (a, b) { return b.date.localeCompare(a.date); });
+            list.innerHTML = sorted.map(function (e) {
+                var nW = e.normWeighted !== undefined ? e.normWeighted : e.normalH;
+                var isDouble = e.dayType === 'sunday' || e.dayType === 'bankholiday';
+                var totalEff = nW + e.otWeighted + e.trWeighted;
+                var earn = entryEarnings(e);
 
-                var otPill = e.otH > 0 ? '<div class="pill" style="border-color:#f59e0b"><span class="pill-label" style="color:#f59e0b">OT</span><span class="pill-value">' + fmtH(e.otH) + '</span><span class="pill-sub">&times;avg ' + avgOT + '</span></div>' : '';
-                var trPill = e.trH > 0 ? '<div class="pill" style="border-color:#10b981"><span class="pill-label" style="color:#10b981">Travel</span><span class="pill-value">' + fmtH(e.trH) + '</span><span class="pill-sub">&times;avg ' + avgTr + '</span></div>' : '';
+                var ew = [];
+                if (e.normalH > 16) ew.push('Long shift');
+                if (e.hasOT && timeToH(e.otStart) < timeToH(e.normEnd)) ew.push('OT/work overlap');
+                var wBadge = ew.length ? '<span class="warn-badge">&#9888; ' + ew.join(', ') + '</span>' : '';
+                var bhBadge = isIrishBH(e.date) ? '<span class="day-badge" style="background:#b45309">&#127981; ' + getBHName(e.date) + '</span>' : '';
 
-                var otDetail = '';
+                var normPill = '<div class="pill" style="border-color:#3b82f6"><span class="pill-label" style="color:#3b82f6">Normal</span><span class="pill-value">' + fmtH(e.normalH) + '</span><span class="pill-sub">' + (isDouble ? '&times;2.0' : '&times;1.0') + '</span></div>';
+                var otPill = e.otH > 0 ? '<div class="pill" style="border-color:#f59e0b"><span class="pill-label" style="color:#f59e0b">OT</span><span class="pill-value">' + fmtH(e.otH) + '</span><span class="pill-sub">&times;avg ' + (e.otWeighted / e.otH).toFixed(2) + '</span></div>' : '';
+                var trPill = e.trH > 0 ? '<div class="pill" style="border-color:#10b981"><span class="pill-label" style="color:#10b981">Travel</span><span class="pill-value">' + fmtH(e.trH) + '</span><span class="pill-sub">&times;avg ' + (e.trWeighted / e.trH).toFixed(2) + '</span></div>' : '';
+
+                var normDet = '<p class="detail-row"><b>Normal:</b> ' + e.normStart + '&ndash;' + e.normEnd + ' (' + fmtH(e.normalH) + ') &times;' + (isDouble ? '2.0 &mdash; Double Time (Sun/BH)' : '1.0') + '</p>';
+                var otDet = '';
                 if (e.otH > 0) {
-                    otDetail = '<div class="detail-sub">&#9889; Overtime (' + DAY_LABELS[e.dayType] + ') ' + e.otStart + '&ndash;' + e.otEnd + '</div>';
-                    e.otSegs.forEach(function (s) { otDetail += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
+                    otDet = '<div class="detail-sub">&#9889; Overtime (' + DAY_LABELS[e.dayType] + ') ' + e.otStart + '&ndash;' + e.otEnd + '</div>';
+                    (e.otSegs || []).forEach(function (s) { otDet += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times;' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
                 }
-
-                var trDetail = '';
+                var trDet = '';
                 if (e.hasTr && e.mH > 0) {
-                    trDetail += '<div class="detail-sub">&#127968; Morning Travel &mdash; depart ' + decToTime(e.mDep) + ', ' + fmtH(e.mH) + '</div>';
-                    e.mSegs.forEach(function (s) { trDetail += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
+                    trDet += '<div class="detail-sub">&#127968; Morning Travel: depart ' + decToTime(e.mDep) + ' (' + fmtH(e.mH) + ')</div>';
+                    (e.mSegs || []).forEach(function (s) { trDet += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times;' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
                 }
                 if (e.hasTr && e.eH > 0) {
-                    trDetail += '<div class="detail-sub">&#127970; Evening Travel &mdash; depart ' + decToTime(e.eDep) + ', ' + fmtH(e.eH) + '</div>';
-                    e.eSegs.forEach(function (s) { trDetail += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times; ' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
+                    trDet += '<div class="detail-sub">&#127970; Evening Travel: depart ' + decToTime(e.eDep) + ' (' + fmtH(e.eH) + ')</div>';
+                    (e.eSegs || []).forEach(function (s) { trDet += '<p class="seg-row">&rarr; ' + fmtH(s.hours) + ' &times;' + s.multiplier + ' &mdash; ' + s.label + ' = ' + fmtH(s.hours * s.multiplier) + ' eff.</p>'; });
                 }
 
-                return '<div class="entry">'
-                    + '<div class="entry-header" onclick="toggleDetail(\'det-' + e.id + '\',\'chev-' + e.id + '\')">'
+                var earnBox = '';
+                if (earn !== null) {
+                    earnBox = '<div class="earn-box">'
+                        + '<div class="earn-title">&#128176; Estimated Earnings</div>'
+                        + '<div class="earn-grid">'
+                        + '<div class="earn-item"><div class="earn-label">Normal</div><div class="earn-val">' + fmtMoney(nW * defaults.payRate) + '</div><div class="earn-sub">' + fmtH(nW) + ' eff.</div></div>'
+                        + (e.otH > 0 ? '<div class="earn-item"><div class="earn-label">Overtime</div><div class="earn-val">' + fmtMoney(e.otWeighted * defaults.payRate) + '</div><div class="earn-sub">' + fmtH(e.otWeighted) + ' eff.</div></div>' : '')
+                        + (e.trH > 0 ? '<div class="earn-item"><div class="earn-label">Travel</div><div class="earn-val">' + fmtMoney(e.trWeighted * defaults.payRate) + '</div><div class="earn-sub">' + fmtH(e.trWeighted) + ' eff.</div></div>' : '')
+                        + '<div class="earn-item"><div class="earn-label">Total Day</div><div class="earn-val" style="color:#4ade80;font-size:18px">' + fmtMoney(earn) + '</div><div class="earn-sub">' + fmtH(totalEff) + ' eff.</div></div>'
+                        + '</div></div>';
+                }
+
+                return '<div class="entry" id="entry-' + e.id + '">'
+                    + '<div class="entry-header" onclick="toggleDet(\'det-' + e.id + '\',\'chev-' + e.id + '\')">'
                     + '<div class="entry-left"><span class="entry-date">' + fmtDate(e.date) + '</span>'
-                    + '<span class="day-badge" style="background:' + DAY_COLORS[e.dayType] + '">' + DAY_LABELS[e.dayType] + '</span></div>'
-                    + '<div class="entry-right">'
-                    + '<div class="pill" style="border-color:#3b82f6"><span class="pill-label" style="color:#3b82f6">Normal</span><span class="pill-value">' + fmtH(e.normalH) + '</span></div>'
-                    + otPill + trPill
+                    + '<span class="day-badge" style="background:' + DAY_COLORS[e.dayType] + '">' + DAY_LABELS[e.dayType] + '</span>'
+                    + bhBadge + wBadge + '</div>'
+                    + '<div class="entry-right">' + normPill + otPill + trPill
                     + '<span class="chevron" id="chev-' + e.id + '">&#9660;</span>'
-                    + '<button class="del-btn" onclick="event.stopPropagation();deleteEntry(' + e.id + ')">&#10005;</button>'
-                    + '</div></div>'
+                    + '<div class="entry-actions">'
+                    + '<button class="edit-btn" onclick="event.stopPropagation();startEdit(' + e.id + ')">&#9998; Edit</button>'
+                    + '<button class="del-btn" onclick="event.stopPropagation();askDelete(' + e.id + ')">&#128465; Delete</button>'
+                    + '</div></div></div>'
+                    // Inline delete confirm — no browser dialog
+                    + '<div class="del-confirm" id="delconf-' + e.id + '">'
+                    + '<span class="del-confirm-msg">Delete this entry?</span>'
+                    + '<button class="del-confirm-yes" onclick="confirmDelete(' + e.id + ')">Yes, delete</button>'
+                    + '<button class="del-confirm-no" onclick="cancelDelete(' + e.id + ')">Cancel</button>'
+                    + '</div>'
                     + '<div class="entry-detail" id="det-' + e.id + '">'
-                    + '<p class="detail-row"><b>Normal:</b> ' + e.normStart + '&ndash;' + e.normEnd + ' (' + fmtH(e.normalH) + ') &times; 1.0</p>'
-                    + otDetail + trDetail
-                    + (e.notes ? '<p class="detail-row" style="margin-top:6px"><b>Notes:</b> ' + e.notes + '</p>' : '')
+                    + normDet + otDet + trDet
+                    + '<p class="detail-row" style="margin-top:8px;font-weight:700;color:#6366f1">Total Effective: ' + fmtH(totalEff) + '</p>'
+                    + (e.notes ? '<p class="detail-row"><b>Notes:</b> ' + e.notes + '</p>' : '')
+                    + earnBox
                     + '</div></div>';
             }).join('');
         }
 
-        function toggleDetail(detId, chevId) {
-            var det = document.getElementById(detId), chev = document.getElementById(chevId);
-            var open = det.classList.toggle('open');
-            chev.innerHTML = open ? '&#9650;' : '&#9660;';
-        }
-        function deleteEntry(id) {
-            entries = entries.filter(function (e) { return e.id !== id });
-            if (!entries.length) document.getElementById('exportBtn').disabled = true;
-            renderEntries(); renderDashboard();
-            saveToStorage();
+        function toggleDet(dId, cId) {
+            var d = document.getElementById(dId), c = document.getElementById(cId);
+            var o = d.classList.toggle('open');
+            c.innerHTML = o ? '&#9650;' : '&#9660;';
         }
 
-        // ─── Dashboard ────────────────────────────────────────────────────────────────
+        // ═══════════════════════════════════════════════════════════════
+        // BANNER
+        // ═══════════════════════════════════════════════════════════════
+        function updateBanner() {
+            var cur = todayStr().slice(0, 7);
+            var me = entries.filter(function (e) { return e.date.slice(0, 7) === cur; });
+            var wrap = document.getElementById('bannerWrap');
+            if (!me.length) { wrap.style.display = 'none'; return; }
+            wrap.style.display = 'block';
+            var nW = me.reduce(function (s, e) { return s + (e.normWeighted !== undefined ? e.normWeighted : e.normalH); }, 0);
+            var oW = me.reduce(function (s, e) { return s + e.otWeighted; }, 0);
+            var tW = me.reduce(function (s, e) { return s + e.trWeighted; }, 0);
+            var tot = nW + oW + tW;
+            document.getElementById('bnNorm').textContent = fmtH(nW);
+            document.getElementById('bnOT').textContent = fmtH(oW);
+            document.getElementById('bnTr').textContent = fmtH(tW);
+            document.getElementById('bnTot').textContent = fmtH(tot);
+            document.getElementById('bnMonth').textContent = new Date().toLocaleDateString('en-IE', { month: 'long', year: 'numeric' });
+            var payChip = document.getElementById('bnPayChip');
+            if (defaults.payRate > 0) {
+                document.getElementById('bnPay').textContent = fmtMoney(tot * defaults.payRate);
+                payChip.style.display = 'flex';
+            } else { payChip.style.display = 'none'; }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DASHBOARD
+        // ═══════════════════════════════════════════════════════════════
         function renderDashboard() {
             var el = document.getElementById('dashContent');
             if (!entries.length) { el.innerHTML = '<p class="empty-msg">No entries yet &mdash; log some hours first.</p>'; return; }
@@ -1067,66 +1925,258 @@
             });
             el.innerHTML = Object.keys(map).sort().reverse().map(function (key) {
                 var grp = map[key];
-                var nT = grp.reduce(function (s, e) { return s + e.normalH }, 0);
-                var oT = grp.reduce(function (s, e) { return s + e.otH }, 0);
-                var oW = grp.reduce(function (s, e) { return s + e.otWeighted }, 0);
-                var tT = grp.reduce(function (s, e) { return s + e.trH }, 0);
-                var tW = grp.reduce(function (s, e) { return s + e.trWeighted }, 0);
-                var tot = nT + oW + tW;
-                var label = dashView === 'weekly' ? 'Week of ' + fmtDate(key) : new Date(key + '-01').toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+                var nT = grp.reduce(function (s, e) { return s + e.normalH; }, 0);
+                var nW = grp.reduce(function (s, e) { return s + (e.normWeighted !== undefined ? e.normWeighted : e.normalH); }, 0);
+                var oT = grp.reduce(function (s, e) { return s + e.otH; }, 0);
+                var oW = grp.reduce(function (s, e) { return s + e.otWeighted; }, 0);
+                var tT = grp.reduce(function (s, e) { return s + e.trH; }, 0);
+                var tW = grp.reduce(function (s, e) { return s + e.trWeighted; }, 0);
+                var tot = nW + oW + tW;
+                var label = dashView === 'weekly' ? 'Week of ' + fmtDate(key) : new Date(key + '-02').toLocaleDateString('en-IE', { month: 'long', year: 'numeric' });
                 var oSub = oT > 0 ? '&times;avg ' + (oW / oT).toFixed(2) + ' &rarr; ' + fmtH(oW) + ' eff.' : '&mdash;';
                 var tSub = tT > 0 ? '&times;avg ' + (tW / tT).toFixed(2) + ' &rarr; ' + fmtH(tW) + ' eff.' : '&mdash;';
+                var earnStat = '';
+                if (defaults.payRate > 0) {
+                    earnStat = '<div class="stat-box earn-stat"><div class="stat-icon">&#128176;</div>'
+                        + '<div class="stat-label">Est. Earnings</div>'
+                        + '<div class="stat-val">' + fmtMoney(tot * defaults.payRate) + '</div>'
+                        + '<div class="stat-sub">@ ' + fmtMoney(defaults.payRate) + '/hr</div></div>';
+                }
                 return '<div class="dash-group"><div class="dash-group-header">' + label + '</div>'
                     + '<div class="dash-stats">'
-                    + '<div class="stat-box"><div class="stat-icon">&#128336;</div><div class="stat-label">Normal Hours</div><div class="stat-val" style="color:#3b82f6">' + fmtH(nT) + '</div><div class="stat-sub">&times; 1.0</div></div>'
+                    + '<div class="stat-box"><div class="stat-icon">&#128336;</div><div class="stat-label">Normal Hours</div><div class="stat-val" style="color:#3b82f6">' + fmtH(nT) + '</div><div class="stat-sub">' + fmtH(nW) + ' eff.</div></div>'
                     + '<div class="stat-box"><div class="stat-icon">&#9889;</div><div class="stat-label">Overtime</div><div class="stat-val" style="color:#f59e0b">' + fmtH(oT) + '</div><div class="stat-sub">' + oSub + '</div></div>'
                     + '<div class="stat-box"><div class="stat-icon">&#128663;</div><div class="stat-label">Travel</div><div class="stat-val" style="color:#10b981">' + fmtH(tT) + '</div><div class="stat-sub">' + tSub + '</div></div>'
                     + '<div class="stat-box"><div class="stat-icon">&#8721;</div><div class="stat-label">Total Effective</div><div class="stat-val" style="color:#6366f1">' + fmtH(tot) + '</div><div class="stat-sub">&nbsp;</div></div>'
+                    + earnStat
                     + '</div></div>';
             }).join('');
         }
 
-        // ─── Excel export ─────────────────────────────────────────────────────────────
+        // ═══════════════════════════════════════════════════════════════
+        // BANK HOLIDAY LIST
+        // ═══════════════════════════════════════════════════════════════
+        function renderBHList() {
+            var today = todayStr(), year = new Date().getFullYear();
+            var rows = Object.keys(IRISH_BH).filter(function (d) { var y = parseInt(d.slice(0, 4)); return y === year || y === year + 1; }).sort();
+            document.getElementById('bhList').innerHTML = rows.map(function (d) {
+                return '<div class="bh-row' + (d < today ? ' bh-past' : '') + '">'
+                    + '<span class="bh-date">' + fmtDate(d) + '</span>'
+                    + '<span class="bh-name">' + IRISH_BH[d] + '</span>'
+                    + '<span style="font-weight:700;color:var(--amber);font-size:13px">&#215;2.0</span></div>';
+            }).join('');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // TABS / UI
+        // ═══════════════════════════════════════════════════════════════
+        function switchTab(name, btn) {
+            document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+            document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+            document.getElementById('tab-' + name).classList.add('active');
+            btn.classList.add('active');
+            if (name === 'dashboard') renderDashboard();
+        }
+        function toggleSec(id, chk) { document.getElementById(id).style.display = chk.checked ? 'block' : 'none'; }
+        function setDashView(v) {
+            dashView = v;
+            document.getElementById('btnWeekly').classList.toggle('active', v === 'weekly');
+            document.getElementById('btnMonthly').classList.toggle('active', v === 'monthly');
+            renderDashboard();
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // SETTINGS MODAL
+        // ═══════════════════════════════════════════════════════════════
+        function openSettings() {
+            document.getElementById('defPayRate').value = defaults.payRate || '';
+            document.getElementById('defCurrency').value = defaults.currency || '€';
+            document.getElementById('defNormStart').value = defaults.normStart;
+            document.getElementById('defNormEnd').value = defaults.normEnd;
+            document.getElementById('defMornDepart').value = defaults.mornDepart;
+            document.getElementById('defMornHrs').value = defaults.mornHrs;
+            document.getElementById('defMornMins').value = defaults.mornMins;
+            document.getElementById('defEveDepart').value = defaults.eveDepart;
+            document.getElementById('defEveHrs').value = defaults.eveHrs;
+            document.getElementById('defEveMins').value = defaults.eveMins;
+            document.getElementById('settingsModal').classList.add('open');
+        }
+        function closeSettings() { document.getElementById('settingsModal').classList.remove('open'); }
+        function saveDefaults() {
+            defaults = {
+                payRate: parseFloat(document.getElementById('defPayRate').value) || 0,
+                currency: document.getElementById('defCurrency').value || '€',
+                normStart: document.getElementById('defNormStart').value,
+                normEnd: document.getElementById('defNormEnd').value,
+                mornDepart: document.getElementById('defMornDepart').value,
+                mornHrs: parseInt(document.getElementById('defMornHrs').value) || 0,
+                mornMins: parseInt(document.getElementById('defMornMins').value) || 0,
+                eveDepart: document.getElementById('defEveDepart').value,
+                eveHrs: parseInt(document.getElementById('defEveHrs').value) || 0,
+                eveMins: parseInt(document.getElementById('defEveMins').value) || 0
+            };
+            save(); closeSettings();
+            updateBanner(); renderEntries();
+            toast('Settings saved!');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DATA MODAL — Backup / Import / Clear
+        // ═══════════════════════════════════════════════════════════════
+        function openDataModal() { document.getElementById('dataModal').classList.add('open'); }
+        function closeDataModal() { document.getElementById('dataModal').classList.remove('open'); }
+
+        function exportJSON() {
+            if (!entries.length) { toast('No entries to back up.', 'error'); return; }
+            var payload = { version: 1, exportedAt: new Date().toISOString(), entries: entries, defaults: defaults };
+            var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'BMS_Backup_' + todayStr() + '.json';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            toast('Backup downloaded!');
+        }
+
+        function importJSON(input) {
+            var file = input.files[0];
+            if (!file) return;
+            var reader = new FileReader();
+            reader.onload = function (ev) {
+                try {
+                    var data = JSON.parse(ev.target.result);
+                    var imported = data.entries || data; // support both versioned and raw arrays
+                    if (!Array.isArray(imported)) throw new Error('Invalid format');
+                    // Merge — add entries that don't already exist by id
+                    var existing = entries.map(function (e) { return e.id; });
+                    var added = 0;
+                    imported.forEach(function (e) {
+                        if (!existing.includes(e.id)) { entries.push(e); added++; }
+                    });
+                    // Sort by date desc
+                    entries.sort(function (a, b) { return b.date.localeCompare(a.date); });
+                    if (added > 0) {
+                        document.getElementById('exportBtn').disabled = false;
+                        renderEntries(); updateBanner(); save();
+                        document.getElementById('importStatus').textContent = '✓ ' + added + ' entr' + (added === 1 ? 'y' : 'ies') + ' imported successfully.';
+                        toast(added + ' entries imported!');
+                    } else {
+                        document.getElementById('importStatus').textContent = 'No new entries found (all already exist).';
+                    }
+                } catch (err) {
+                    document.getElementById('importStatus').style.color = '#ef4444';
+                    document.getElementById('importStatus').textContent = 'Error: Invalid backup file.';
+                    toast('Import failed — invalid file.', 'error');
+                }
+                input.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        function clearAllData() {
+            // Custom inline confirm inside the modal instead of browser confirm()
+            var btn = document.querySelector('.danger-btn');
+            if (btn.dataset.confirm !== 'yes') {
+                btn.textContent = ' Tap again to confirm — this cannot be undone';
+                btn.dataset.confirm = 'yes';
+                setTimeout(function () { btn.textContent = ' Delete All Entries'; btn.dataset.confirm = ''; }, 4000);
+                return;
+            }
+            entries = [];
+            localStorage.removeItem('bmsEntries');
+            document.getElementById('exportBtn').disabled = true;
+            renderEntries(); renderDashboard(); updateBanner();
+            closeDataModal();
+            toast('All entries deleted');
+            btn.textContent = '&#128465; Delete All Entries';
+            btn.dataset.confirm = '';
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // TOAST
+        // ═══════════════════════════════════════════════════════════════
+        function toast(msg, type) {
+            var t = document.createElement('div');
+            t.className = 'toast' + (type === 'error' ? ' error' : '');
+            t.textContent = msg;
+            document.body.appendChild(t);
+            setTimeout(function () { t.style.opacity = '0'; setTimeout(function () { t.remove(); }, 400); }, 2400);
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // EXCEL EXPORT
+        // ═══════════════════════════════════════════════════════════════
         function exportXLSX() {
             var wb = XLSX.utils.book_new();
+            var hasRate = defaults.payRate > 0;
+            var cur = defaults.currency || '€';
 
-            // Daily detail
-            var detail = [['Date', 'Day',
-                'Work Start', 'Work End', 'Normal Hrs',
+            var dHeaders = ['Date', 'Day Type', 'Bank Holiday',
+                'Work Start', 'Work End', 'Normal Hrs', 'Normal Effective Hrs',
                 'OT Start', 'OT End', 'OT Hrs', 'OT Effective Hrs',
                 'Morn Depart', 'Morn Journey Hrs', 'Morn Effective Hrs',
                 'Eve Depart', 'Eve Journey Hrs', 'Eve Effective Hrs',
                 'Total Travel Hrs', 'Total Travel Effective Hrs',
-                'Total Effective Hrs', 'Notes']];
+                'Total Effective Hrs', 'Notes'];
+            if (hasRate) dHeaders.push('Est. Earnings (' + cur + ')');
+
+            var detail = [dHeaders];
             entries.forEach(function (e) {
-                detail.push([
-                    e.date, DAY_LABELS[e.dayType],
-                    e.normStart, e.normEnd, +e.normalH.toFixed(2),
+                var nW = e.normWeighted !== undefined ? e.normWeighted : e.normalH;
+                var totalEff = nW + e.otWeighted + e.trWeighted;
+                var row = [
+                    e.date, DAY_LABELS[e.dayType], getBHName(e.date) || '',
+                    e.normStart, e.normEnd, +e.normalH.toFixed(2), +nW.toFixed(2),
                     e.hasOT ? e.otStart : '', e.hasOT ? e.otEnd : '', +e.otH.toFixed(2), +e.otWeighted.toFixed(2),
                     e.hasTr ? decToTime(e.mDep) : '', +e.mH.toFixed(2), +e.mWeighted.toFixed(2),
                     e.hasTr ? decToTime(e.eDep) : '', +e.eH.toFixed(2), +e.eWeighted.toFixed(2),
                     +e.trH.toFixed(2), +e.trWeighted.toFixed(2),
-                    +(e.normalH + e.otWeighted + e.trWeighted).toFixed(2),
-                    e.notes
-                ]);
+                    +totalEff.toFixed(2), e.notes
+                ];
+                if (hasRate) row.push(+(totalEff * defaults.payRate).toFixed(2));
+                detail.push(row);
             });
             XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(detail), 'Daily Detail');
 
-            // Weekly
             var wMap = {};
-            entries.forEach(function (e) { var k = weekKey(e.date); if (!wMap[k]) wMap[k] = { n: 0, ot: 0, otW: 0, tr: 0, trW: 0 }; wMap[k].n += e.normalH; wMap[k].ot += e.otH; wMap[k].otW += e.otWeighted; wMap[k].tr += e.trH; wMap[k].trW += e.trWeighted; });
-            var weekly = [['Week Starting', 'Normal Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs']];
-            Object.keys(wMap).sort().forEach(function (k) { var v = wMap[k]; weekly.push([k, +v.n.toFixed(2), +v.ot.toFixed(2), +v.otW.toFixed(2), +v.tr.toFixed(2), +v.trW.toFixed(2), +(v.n + v.otW + v.trW).toFixed(2)]); });
+            entries.forEach(function (e) {
+                var k = weekKey(e.date); if (!wMap[k]) wMap[k] = { n: 0, nW: 0, ot: 0, otW: 0, tr: 0, trW: 0 };
+                wMap[k].n += e.normalH; wMap[k].nW += (e.normWeighted !== undefined ? e.normWeighted : e.normalH);
+                wMap[k].ot += e.otH; wMap[k].otW += e.otWeighted; wMap[k].tr += e.trH; wMap[k].trW += e.trWeighted;
+            });
+            var wH = ['Week Starting', 'Normal Hrs', 'Normal Effective Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs'];
+            if (hasRate) wH.push('Est. Earnings (' + cur + ')');
+            var weekly = [wH];
+            Object.keys(wMap).sort().forEach(function (k) {
+                var v = wMap[k], tot = +(v.nW + v.otW + v.trW).toFixed(2);
+                var r = [k, +v.n.toFixed(2), +v.nW.toFixed(2), +v.ot.toFixed(2), +v.otW.toFixed(2), +v.tr.toFixed(2), +v.trW.toFixed(2), tot];
+                if (hasRate) r.push(+(tot * defaults.payRate).toFixed(2));
+                weekly.push(r);
+            });
             XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(weekly), 'Weekly Summary');
 
-            // Monthly
             var mMap = {};
-            entries.forEach(function (e) { var k = monthKey(e.date); if (!mMap[k]) mMap[k] = { n: 0, ot: 0, otW: 0, tr: 0, trW: 0 }; mMap[k].n += e.normalH; mMap[k].ot += e.otH; mMap[k].otW += e.otWeighted; mMap[k].tr += e.trH; mMap[k].trW += e.trWeighted; });
-            var monthly = [['Month', 'Normal Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs']];
-            Object.keys(mMap).sort().forEach(function (k) { var v = mMap[k]; monthly.push([k, +v.n.toFixed(2), +v.ot.toFixed(2), +v.otW.toFixed(2), +v.tr.toFixed(2), +v.trW.toFixed(2), +(v.n + v.otW + v.trW).toFixed(2)]); });
+            entries.forEach(function (e) {
+                var k = monthKey(e.date); if (!mMap[k]) mMap[k] = { n: 0, nW: 0, ot: 0, otW: 0, tr: 0, trW: 0 };
+                mMap[k].n += e.normalH; mMap[k].nW += (e.normWeighted !== undefined ? e.normWeighted : e.normalH);
+                mMap[k].ot += e.otH; mMap[k].otW += e.otWeighted; mMap[k].tr += e.trH; mMap[k].trW += e.trWeighted;
+            });
+            var mH = ['Month', 'Normal Hrs', 'Normal Effective Hrs', 'OT Hrs', 'OT Effective Hrs', 'Travel Hrs', 'Travel Effective Hrs', 'Total Effective Hrs'];
+            if (hasRate) mH.push('Est. Earnings (' + cur + ')');
+            var monthly = [mH];
+            Object.keys(mMap).sort().forEach(function (k) {
+                var v = mMap[k], tot = +(v.nW + v.otW + v.trW).toFixed(2);
+                var r = [k, +v.n.toFixed(2), +v.nW.toFixed(2), +v.ot.toFixed(2), +v.otW.toFixed(2), +v.tr.toFixed(2), +v.trW.toFixed(2), tot];
+                if (hasRate) r.push(+(tot * defaults.payRate).toFixed(2));
+                monthly.push(r);
+            });
             XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(monthly), 'Monthly Summary');
 
-            XLSX.writeFile(wb, 'BMS_Work_Hours_' + new Date().toISOString().slice(0, 10) + '.xlsx');
+            var bhSheet = [['Date', 'Holiday Name', 'Multiplier']];
+            Object.keys(IRISH_BH).sort().forEach(function (d) { bhSheet.push([d, IRISH_BH[d], 'x2.0']); });
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(bhSheet), 'Irish Bank Holidays');
+
+            XLSX.writeFile(wb, 'BMS_Work_Hours_' + todayStr() + '.xlsx');
         }
     </script>
 
